@@ -1,0 +1,124 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/resources/scaffold/pageTemplate.xhtml">
+
+	<f:metadata>
+		<f:viewParam name="page" value='#{enlaceBean.page}'/>
+		<f:event type="preRenderView" listener='#{enlaceBean.paginate}'/>
+	</f:metadata>
+
+	<ui:param name="pageTitle" value="Search Enlace entities"/>
+
+	<ui:define name="header">
+		Enlace
+	</ui:define>
+
+	<ui:define name="subheader">
+		Search Enlace entities
+	</ui:define>
+
+	<ui:define name="footer"/>
+
+	<ui:define name="main">
+		<h:form id="search">
+			<f:validateBean disabled="true">
+				<h:panelGroup styleClass="search">
+
+					<h:panelGrid columnClasses="label,component,required" columns="3">
+						<h:outputLabel for="enlaceBeanExampleEnlace" value="Enlace:"/>
+						<h:panelGroup>
+							<h:inputText id="enlaceBeanExampleEnlace" maxLength="50" value="#{enlaceBean.example.enlace}"/>
+							<h:message for="enlaceBeanExampleEnlace" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="enlaceBeanExampleDescripcion" value="Descripcion:"/>
+						<h:panelGroup>
+							<h:inputText id="enlaceBeanExampleDescripcion" maxLength="250" value="#{enlaceBean.example.descripcion}"/>
+							<h:message for="enlaceBeanExampleDescripcion" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="enlaceBeanExampleOrden" value="Orden:"/>
+						<h:panelGroup>
+							<h:inputText id="enlaceBeanExampleOrden" value="#{enlaceBean.example.orden}"/>
+							<h:message for="enlaceBeanExampleOrden" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="enlaceBeanExampleRutaenlace" value="Rutaenlace:"/>
+						<h:panelGroup>
+							<h:inputText id="enlaceBeanExampleRutaenlace" maxLength="50" value="#{enlaceBean.example.rutaenlace}"/>
+							<h:message for="enlaceBeanExampleRutaenlace" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="enlaceBeanExampleImagen" value="Imagen:"/>
+						<h:panelGroup>
+							<h:inputText id="enlaceBeanExampleImagen" maxLength="50" value="#{enlaceBean.example.imagen}"/>
+							<h:message for="enlaceBeanExampleImagen" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+					</h:panelGrid>
+					<h:panelGroup styleClass="buttons">
+						<h:commandLink value="Search" action='#{enlaceBean.search}' styleClass="btn btn-primary"/>
+						<h:commandLink value="Create New" action='#{enlaceBean.create}' styleClass="btn btn-primary"/>
+					</h:panelGroup>
+				</h:panelGroup>
+			</f:validateBean>
+			
+			<h:dataTable id="enlaceBeanPageItems" styleClass="data-table" value="#{enlaceBean.pageItems}" var="_item">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Enlace"/>
+					</f:facet>
+					<h:link outcome="/enlace/view">
+						<f:param name="id" value="#{_item.idenlace}"/>
+						<h:outputText id="itemEnlace" value="#{_item.enlace}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Descripcion"/>
+					</f:facet>
+					<h:link outcome="/enlace/view">
+						<f:param name="id" value="#{_item.idenlace}"/>
+						<h:outputText id="itemDescripcion" value="#{_item.descripcion}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Rutaenlace"/>
+					</f:facet>
+					<h:link outcome="/enlace/view">
+						<f:param name="id" value="#{_item.idenlace}"/>
+						<h:outputText id="itemRutaenlace" value="#{_item.rutaenlace}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Imagen"/>
+					</f:facet>
+					<h:link outcome="/enlace/view">
+						<f:param name="id" value="#{_item.idenlace}"/>
+						<h:outputText id="itemImagen" value="#{_item.imagen}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Fecharegistro"/>
+					</f:facet>
+					<h:link outcome="/enlace/view">
+						<f:param name="id" value="#{_item.idenlace}"/>
+						<h:outputText id="itemFecharegistro" value="#{_item.fecharegistro}"/>
+					</h:link>
+				</h:column>
+			</h:dataTable>
+			<ui:include src="/resources/scaffold/paginator.xhtml">
+				<ui:param name="paginatorBean" value='#{enlaceBean}'/>
+			</ui:include>
+		</h:form>
+			
+	</ui:define>
+
+</ui:composition>

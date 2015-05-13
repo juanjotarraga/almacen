@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/resources/scaffold/pageTemplate.xhtml">
+
+	<f:metadata>
+		<f:viewParam name="page" value='#{estadoBean.page}'/>
+		<f:event type="preRenderView" listener='#{estadoBean.paginate}'/>
+	</f:metadata>
+
+	<ui:param name="pageTitle" value="Search Estado entities"/>
+
+	<ui:define name="header">
+		Estado
+	</ui:define>
+
+	<ui:define name="subheader">
+		Buscar Estado
+	</ui:define>
+
+	<ui:define name="footer"/>
+
+	<ui:define name="main">
+		<h:form id="search">
+			<f:validateBean disabled="true">
+				<h:panelGroup styleClass="search">
+					
+					
+					<h:panelGrid columnClasses="label,component,required" columns="3">
+						<h:outputLabel for="estadoBeanExampleID" value="ID:"/>
+						<h:panelGroup>
+							<h:inputText id="estadoBeanExampleID" maxLength="10" value="#{estadoBean.example.idestado}"/>
+							<h:message for="estadoBeanExampleID" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>						
+					</h:panelGrid>
+					
+					<h:panelGrid columnClasses="label,component,required" columns="3">
+						<h:outputLabel for="estadoBeanExampleEstado" value="Estado:"/>
+						<h:panelGroup>
+							<h:inputText id="estadoBeanExampleEstado" maxLength="50" value="#{estadoBean.example.estado}"/>
+							<h:message for="estadoBeanExampleEstado" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>						
+					</h:panelGrid>
+					
+					<h:panelGroup styleClass="buttons">
+						<h:commandLink value="Search" action='#{estadoBean.search}' styleClass="btn btn-primary"/>
+						<h:commandLink value="Create New" action='#{estadoBean.create}' styleClass="btn btn-primary"/>
+					</h:panelGroup>
+				</h:panelGroup>
+			</f:validateBean>
+			
+			<h:dataTable id="estadoBeanPageItems" styleClass="data-table" value="#{estadoBean.pageItems}" var="_item">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Estado"/>
+					</f:facet>
+					<h:link outcome="/estado/view">
+						<f:param name="id" value="#{_item.idestado}"/>
+						<h:outputText id="itemEstado" value="#{_item.estado}"/>
+					</h:link>
+				</h:column>
+			</h:dataTable>
+			<ui:include src="/resources/scaffold/paginator.xhtml">
+				<ui:param name="paginatorBean" value='#{estadoBean}'/>
+			</ui:include>
+		</h:form>
+			
+	</ui:define>
+
+</ui:composition>

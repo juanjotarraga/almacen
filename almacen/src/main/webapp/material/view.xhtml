@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/resources/scaffold/pageTemplate.xhtml">
+
+	<f:metadata>
+		<f:viewParam name="id" value='#{materialBean.id}'/>
+		<f:event type="preRenderView" listener='#{materialBean.retrieve}'/>
+	</f:metadata>
+
+	<ui:param name="pageTitle" value="View Material"/>
+
+	<ui:define name="header">
+		Material
+	</ui:define>
+
+	<ui:define name="subheader">
+		View existing Material
+	</ui:define>
+
+	<ui:define name="footer"/>
+
+	<ui:define name="main">
+		<h:panelGrid columnClasses="label,component,required" columns="3">
+			<h:outputLabel for="materialBeanMaterialCodigomaterial" value="Codigomaterial:"/>
+			<h:outputText id="materialBeanMaterialCodigomaterial" value="#{materialBean.material.codigomaterial}"/>
+			<h:outputText/>
+			<h:outputLabel for="materialBeanMaterialDescripcion" value="Descripcion:"/>
+			<h:outputText id="materialBeanMaterialDescripcion" value="#{materialBean.material.descripcion}"/>
+			<h:outputText/>
+			<h:outputLabel for="materialBeanMaterialFecharegistro" value="Fecharegistro:"/>
+			<h:outputText id="materialBeanMaterialFecharegistro" value="#{materialBean.material.fecharegistro}"/>
+			<h:outputText/>
+			<h:outputLabel for="materialBeanMaterialFechamodificacion" value="Fechamodificacion:"/>
+			<h:outputText id="materialBeanMaterialFechamodificacion" value="#{materialBean.material.fechamodificacion}"/>
+			<h:outputText/>
+			<h:outputLabel for="materialBeanMaterialIdunidadmedida" value="Idunidadmedida:"/>
+			<h:outputText id="materialBeanMaterialIdunidadmedida" value="#{materialBean.material.idunidadmedida}"/>
+			<h:outputText/>
+			<h:outputLabel for="materialBeanMaterialIdsubcategoria" value="Idsubcategoria:"/>
+			<h:outputText id="materialBeanMaterialIdsubcategoria" value="#{materialBean.material.idsubcategoria}"/>
+			<h:outputText/>
+			<h:outputLabel for="materialBeanMaterialIdestado" value="Idestado:"/>
+			<h:outputText id="materialBeanMaterialIdestado" value="#{materialBean.material.idestado}"/>
+			<h:outputText/>
+			<h:outputLabel for="materialBeanMaterialIdusuario" value="Idusuario:"/>
+			<h:outputText id="materialBeanMaterialIdusuario" value="#{materialBean.material.idusuario}"/>
+			<h:outputText/>
+		</h:panelGrid>
+
+		<div class="buttons">
+			<h:link value="View All" outcome="search" styleClass="btn btn-primary"/> 
+			<h:link value="Edit" outcome="create" includeViewParams="true" styleClass="btn btn-primary"/>
+			<h:link value="Create New" outcome="create" styleClass="btn btn-primary"/>
+		</div>
+	</ui:define>
+
+</ui:composition>

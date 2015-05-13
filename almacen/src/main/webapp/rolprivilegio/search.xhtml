@@ -1,0 +1,106 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/resources/scaffold/pageTemplate.xhtml">
+
+	<f:metadata>
+		<f:viewParam name="page" value='#{rolprivilegioBean.page}'/>
+		<f:event type="preRenderView" listener='#{rolprivilegioBean.paginate}'/>
+	</f:metadata>
+
+	<ui:param name="pageTitle" value="Search Rolprivilegio entities"/>
+
+	<ui:define name="header">
+		Rolprivilegio
+	</ui:define>
+
+	<ui:define name="subheader">
+		Search Rolprivilegio entities
+	</ui:define>
+
+	<ui:define name="footer"/>
+
+	<ui:define name="main">
+		<h:form id="search">
+			<f:validateBean disabled="true">
+				<h:panelGroup styleClass="search">
+
+					<h:panelGrid columnClasses="label,component,required" columns="3">
+						<h:outputLabel for="rolprivilegioBeanExampleRolprivilegio" value="Rolprivilegio:"/>
+						<h:panelGroup>
+							<h:inputText id="rolprivilegioBeanExampleRolprivilegio" maxLength="50" value="#{rolprivilegioBean.example.rolprivilegio}"/>
+							<h:message for="rolprivilegioBeanExampleRolprivilegio" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="rolprivilegioBeanExampleDescripcion" value="Descripcion:"/>
+						<h:panelGroup>
+							<h:inputText id="rolprivilegioBeanExampleDescripcion" maxLength="250" value="#{rolprivilegioBean.example.descripcion}"/>
+							<h:message for="rolprivilegioBeanExampleDescripcion" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="rolprivilegioBeanExampleRuta" value="Ruta:"/>
+						<h:panelGroup>
+							<h:inputText id="rolprivilegioBeanExampleRuta" maxLength="100" value="#{rolprivilegioBean.example.ruta}"/>
+							<h:message for="rolprivilegioBeanExampleRuta" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="rolprivilegioBeanExampleFecharegistro" value="Fecharegistro:"/>
+						<h:panelGroup>
+							<h:inputText id="rolprivilegioBeanExampleFecharegistro" maxLength="20" value="#{rolprivilegioBean.example.fecharegistro}"/>
+							<h:message for="rolprivilegioBeanExampleFecharegistro" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="rolprivilegioBeanExampleFechamodificacion" value="Fechamodificacion:"/>
+						<h:panelGroup>
+							<h:inputText id="rolprivilegioBeanExampleFechamodificacion" maxLength="20" value="#{rolprivilegioBean.example.fechamodificacion}"/>
+							<h:message for="rolprivilegioBeanExampleFechamodificacion" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+					</h:panelGrid>
+					<h:panelGroup styleClass="buttons">
+						<h:commandLink value="Search" action='#{rolprivilegioBean.search}' styleClass="btn btn-primary"/>
+						<h:commandLink value="Create New" action='#{rolprivilegioBean.create}' styleClass="btn btn-primary"/>
+					</h:panelGroup>
+				</h:panelGroup>
+			</f:validateBean>
+			
+			<h:dataTable id="rolprivilegioBeanPageItems" styleClass="data-table" value="#{rolprivilegioBean.pageItems}" var="_item">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Rolprivilegio"/>
+					</f:facet>
+					<h:link outcome="/rolprivilegio/view">
+						<f:param name="id" value="#{_item.idrolprivilegio}"/>
+						<h:outputText id="itemRolprivilegio" value="#{_item.rolprivilegio}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Descripcion"/>
+					</f:facet>
+					<h:link outcome="/rolprivilegio/view">
+						<f:param name="id" value="#{_item.idrolprivilegio}"/>
+						<h:outputText id="itemDescripcion" value="#{_item.descripcion}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Ruta"/>
+					</f:facet>
+					<h:link outcome="/rolprivilegio/view">
+						<f:param name="id" value="#{_item.idrolprivilegio}"/>
+						<h:outputText id="itemRuta" value="#{_item.ruta}"/>
+					</h:link>
+				</h:column>
+			</h:dataTable>
+			<ui:include src="/resources/scaffold/paginator.xhtml">
+				<ui:param name="paginatorBean" value='#{rolprivilegioBean}'/>
+			</ui:include>
+		</h:form>
+			
+	</ui:define>
+
+</ui:composition>

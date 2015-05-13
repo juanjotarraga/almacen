@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/resources/scaffold/pageTemplate.xhtml">
+
+	<f:metadata>
+		<f:viewParam name="id" value='#{categoriaBean.id}'/>
+		<f:event type="preRenderView" listener='#{categoriaBean.retrieve}'/>
+	</f:metadata>
+
+	<ui:param name="pageTitle" value="View Categoria"/>
+
+	<ui:define name="header">
+		Categoria
+	</ui:define>
+
+	<ui:define name="subheader">
+		View existing Categoria
+	</ui:define>
+
+	<ui:define name="footer"/>
+
+	<ui:define name="main">
+		<h:panelGrid columnClasses="label,component,required" columns="3">
+			<h:outputLabel for="categoriaBeanCategoriaCategoria" value="Categoria:"/>
+			<h:outputText id="categoriaBeanCategoriaCategoria" value="#{categoriaBean.categoria.categoria}"/>
+			<h:outputText/>
+			<h:outputLabel for="categoriaBeanCategoriaCodigocategoria" value="Codigocategoria:"/>
+			<h:outputText id="categoriaBeanCategoriaCodigocategoria" value="#{categoriaBean.categoria.codigocategoria}"/>
+			<h:outputText/>
+			<h:outputLabel for="categoriaBeanCategoriaDescripcion" value="Descripcion:"/>
+			<h:outputText id="categoriaBeanCategoriaDescripcion" value="#{categoriaBean.categoria.descripcion}"/>
+			<h:outputText/>
+			<h:outputLabel for="categoriaBeanCategoriaFecharegistro" value="Fecharegistro:"/>
+			<h:outputText id="categoriaBeanCategoriaFecharegistro" value="#{categoriaBean.categoria.fecharegistro}"/>
+			<h:outputText/>
+			<h:outputLabel for="categoriaBeanCategoriaFechamodificacion" value="Fechamodificacion:"/>
+			<h:outputText id="categoriaBeanCategoriaFechamodificacion" value="#{categoriaBean.categoria.fechamodificacion}"/>
+			<h:outputText/>
+			<h:outputLabel for="categoriaBeanCategoriaIdestado" value="Idestado:"/>
+			<h:outputText id="categoriaBeanCategoriaIdestado" value="#{categoriaBean.categoria.idestado}"/>
+			<h:outputText/>
+		</h:panelGrid>
+
+		<div class="buttons">
+			<h:link value="View All" outcome="search" styleClass="btn btn-primary"/> 
+			<h:link value="Edit" outcome="create" includeViewParams="true" styleClass="btn btn-primary"/>
+			<h:link value="Create New" outcome="create" styleClass="btn btn-primary"/>
+		</div>
+	</ui:define>
+
+</ui:composition>

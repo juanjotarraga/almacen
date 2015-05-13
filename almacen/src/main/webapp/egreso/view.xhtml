@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/resources/scaffold/pageTemplate.xhtml">
+
+	<f:metadata>
+		<f:viewParam name="id" value='#{egresoBean.id}'/>
+		<f:event type="preRenderView" listener='#{egresoBean.retrieve}'/>
+	</f:metadata>
+
+	<ui:param name="pageTitle" value="View Egreso"/>
+
+	<ui:define name="header">
+		Egreso
+	</ui:define>
+
+	<ui:define name="subheader">
+		View existing Egreso
+	</ui:define>
+
+	<ui:define name="footer"/>
+
+	<ui:define name="main">
+		<h:panelGrid columnClasses="label,component,required" columns="3">
+			<h:outputLabel for="egresoBeanEgresoCantidad" value="Cantidad:"/>
+			<h:outputText id="egresoBeanEgresoCantidad" value="#{egresoBean.egreso.cantidad}"/>
+			<h:outputText/>
+			<h:outputLabel for="egresoBeanEgresoPreciounitario" value="Preciounitario:"/>
+			<h:outputText id="egresoBeanEgresoPreciounitario" value="#{egresoBean.egreso.preciounitario}"/>
+			<h:outputText/>
+			<h:outputLabel for="egresoBeanEgresoPreciototal" value="Preciototal:"/>
+			<h:outputText id="egresoBeanEgresoPreciototal" value="#{egresoBean.egreso.preciototal}"/>
+			<h:outputText/>
+			<h:outputLabel for="egresoBeanEgresoFechaingreso" value="Fechaingreso:"/>
+			<h:outputText id="egresoBeanEgresoFechaingreso" value="#{egresoBean.egreso.fechaingreso}"/>
+			<h:outputText/>
+			<h:outputLabel for="egresoBeanEgresoFecharegistro" value="Fecharegistro:"/>
+			<h:outputText id="egresoBeanEgresoFecharegistro" value="#{egresoBean.egreso.fecharegistro}"/>
+			<h:outputText/>
+			<h:outputLabel for="egresoBeanEgresoFechamodificacion" value="Fechamodificacion:"/>
+			<h:outputText id="egresoBeanEgresoFechamodificacion" value="#{egresoBean.egreso.fechamodificacion}"/>
+			<h:outputText/>
+			<h:outputLabel for="egresoBeanEgresoObservacion" value="Observacion:"/>
+			<h:outputText id="egresoBeanEgresoObservacion" value="#{egresoBean.egreso.observacion}"/>
+			<h:outputText/>
+			<h:outputLabel for="egresoBeanEgresoIdkardex" value="Idkardex:"/>
+			<h:outputText id="egresoBeanEgresoIdkardex" value="#{egresoBean.egreso.idkardex}"/>
+			<h:outputText/>
+			<h:outputLabel for="egresoBeanEgresoIddetallesolicitud" value="Iddetallesolicitud:"/>
+			<h:outputText id="egresoBeanEgresoIddetallesolicitud" value="#{egresoBean.egreso.iddetallesolicitud}"/>
+			<h:outputText/>
+			<h:outputLabel for="egresoBeanEgresoIdestado" value="Idestado:"/>
+			<h:outputText id="egresoBeanEgresoIdestado" value="#{egresoBean.egreso.idestado}"/>
+			<h:outputText/>
+			<h:outputLabel for="egresoBeanEgresoIdusuario" value="Idusuario:"/>
+			<h:outputText id="egresoBeanEgresoIdusuario" value="#{egresoBean.egreso.idusuario}"/>
+			<h:outputText/>
+			<h:outputLabel for="egresoBeanEgresoIdtipomovimiento" value="Idtipomovimiento:"/>
+			<h:outputText id="egresoBeanEgresoIdtipomovimiento" value="#{egresoBean.egreso.idtipomovimiento}"/>
+			<h:outputText/>
+		</h:panelGrid>
+
+		<div class="buttons">
+			<h:link value="View All" outcome="search" styleClass="btn btn-primary"/> 
+			<h:link value="Edit" outcome="create" includeViewParams="true" styleClass="btn btn-primary"/>
+			<h:link value="Create New" outcome="create" styleClass="btn btn-primary"/>
+		</div>
+	</ui:define>
+
+</ui:composition>

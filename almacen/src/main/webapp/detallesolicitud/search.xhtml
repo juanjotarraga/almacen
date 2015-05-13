@@ -1,0 +1,124 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/resources/scaffold/pageTemplate.xhtml">
+
+	<f:metadata>
+		<f:viewParam name="page" value='#{detallesolicitudBean.page}'/>
+		<f:event type="preRenderView" listener='#{detallesolicitudBean.paginate}'/>
+	</f:metadata>
+
+	<ui:param name="pageTitle" value="Search Detallesolicitud entities"/>
+
+	<ui:define name="header">
+		Detallesolicitud
+	</ui:define>
+
+	<ui:define name="subheader">
+		Search Detallesolicitud entities
+	</ui:define>
+
+	<ui:define name="footer"/>
+
+	<ui:define name="main">
+		<h:form id="search">
+			<f:validateBean disabled="true">
+				<h:panelGroup styleClass="search">
+
+					<h:panelGrid columnClasses="label,component,required" columns="3">
+						<h:outputLabel for="detallesolicitudBeanExampleCantidad" value="Cantidad:"/>
+						<h:panelGroup>
+							<h:inputText id="detallesolicitudBeanExampleCantidad" value="#{detallesolicitudBean.example.cantidad}"/>
+							<h:message for="detallesolicitudBeanExampleCantidad" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="detallesolicitudBeanExampleFecharegistro" value="Fecharegistro:"/>
+						<h:panelGroup>
+							<h:inputText id="detallesolicitudBeanExampleFecharegistro" maxLength="20" value="#{detallesolicitudBean.example.fecharegistro}"/>
+							<h:message for="detallesolicitudBeanExampleFecharegistro" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="detallesolicitudBeanExampleFechamodificacion" value="Fechamodificacion:"/>
+						<h:panelGroup>
+							<h:inputText id="detallesolicitudBeanExampleFechamodificacion" maxLength="20" value="#{detallesolicitudBean.example.fechamodificacion}"/>
+							<h:message for="detallesolicitudBeanExampleFechamodificacion" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="detallesolicitudBeanExampleIdsolicitud" value="Idsolicitud:"/>
+						<h:panelGroup>
+							<h:inputText id="detallesolicitudBeanExampleIdsolicitud" value="#{detallesolicitudBean.example.idsolicitud}"/>
+							<h:message for="detallesolicitudBeanExampleIdsolicitud" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="detallesolicitudBeanExampleIdestado" value="Idestado:"/>
+						<h:panelGroup>
+							<h:inputText id="detallesolicitudBeanExampleIdestado" value="#{detallesolicitudBean.example.idestado}"/>
+							<h:message for="detallesolicitudBeanExampleIdestado" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+					</h:panelGrid>
+					<h:panelGroup styleClass="buttons">
+						<h:commandLink value="Search" action='#{detallesolicitudBean.search}' styleClass="btn btn-primary"/>
+						<h:commandLink value="Create New" action='#{detallesolicitudBean.create}' styleClass="btn btn-primary"/>
+					</h:panelGroup>
+				</h:panelGroup>
+			</f:validateBean>
+			
+			<h:dataTable id="detallesolicitudBeanPageItems" styleClass="data-table" value="#{detallesolicitudBean.pageItems}" var="_item">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Cantidad"/>
+					</f:facet>
+					<h:link outcome="/detallesolicitud/view">
+						<f:param name="id" value="#{_item.iddetallesolicitud}"/>
+						<h:outputText id="itemCantidad" value="#{_item.cantidad}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Fecharegistro"/>
+					</f:facet>
+					<h:link outcome="/detallesolicitud/view">
+						<f:param name="id" value="#{_item.iddetallesolicitud}"/>
+						<h:outputText id="itemFecharegistro" value="#{_item.fecharegistro}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Fechamodificacion"/>
+					</f:facet>
+					<h:link outcome="/detallesolicitud/view">
+						<f:param name="id" value="#{_item.iddetallesolicitud}"/>
+						<h:outputText id="itemFechamodificacion" value="#{_item.fechamodificacion}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Idsolicitud"/>
+					</f:facet>
+					<h:link outcome="/detallesolicitud/view">
+						<f:param name="id" value="#{_item.iddetallesolicitud}"/>
+						<h:outputText id="itemIdsolicitud" value="#{_item.idsolicitud}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Idestado"/>
+					</f:facet>
+					<h:link outcome="/detallesolicitud/view">
+						<f:param name="id" value="#{_item.iddetallesolicitud}"/>
+						<h:outputText id="itemIdestado" value="#{_item.idestado}"/>
+					</h:link>
+				</h:column>
+			</h:dataTable>
+			<ui:include src="/resources/scaffold/paginator.xhtml">
+				<ui:param name="paginatorBean" value='#{detallesolicitudBean}'/>
+			</ui:include>
+		</h:form>
+			
+	</ui:define>
+
+</ui:composition>

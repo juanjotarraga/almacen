@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<datasources xmlns="http://www.jboss.org/ironjacamar/schema">
+ <datasource jndi-name="java:jboss/datasources/New_MySQL" enabled="true" 
+     use-java-context="true" pool-name="New_MySQL">
+  <connection-url>jdbc:mysql://192.168.0.10:3306/bdalmacen</connection-url>
+  <driver>mysql-connector-java-5.1.34-bin.jar</driver>
+  <pool></pool>
+  <security>
+   <user-name>acg</user-name>
+   <password>acg</password>
+  </security>
+ </datasource>
+</datasources>

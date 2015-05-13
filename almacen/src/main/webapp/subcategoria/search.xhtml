@@ -1,0 +1,124 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/resources/scaffold/pageTemplate.xhtml">
+
+	<f:metadata>
+		<f:viewParam name="page" value='#{subcategoriaBean.page}'/>
+		<f:event type="preRenderView" listener='#{subcategoriaBean.paginate}'/>
+	</f:metadata>
+
+	<ui:param name="pageTitle" value="Search Subcategoria entities"/>
+
+	<ui:define name="header">
+		Subcategoria
+	</ui:define>
+
+	<ui:define name="subheader">
+		Search Subcategoria entities
+	</ui:define>
+
+	<ui:define name="footer"/>
+
+	<ui:define name="main">
+		<h:form id="search">
+			<f:validateBean disabled="true">
+				<h:panelGroup styleClass="search">
+
+					<h:panelGrid columnClasses="label,component,required" columns="3">
+						<h:outputLabel for="subcategoriaBeanExampleSubcategoria" value="Subcategoria:"/>
+						<h:panelGroup>
+							<h:inputText id="subcategoriaBeanExampleSubcategoria" maxLength="50" value="#{subcategoriaBean.example.subcategoria}"/>
+							<h:message for="subcategoriaBeanExampleSubcategoria" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="subcategoriaBeanExampleCodigosubcategoria" value="Codigosubcategoria:"/>
+						<h:panelGroup>
+							<h:inputText id="subcategoriaBeanExampleCodigosubcategoria" maxLength="50" value="#{subcategoriaBean.example.codigosubcategoria}"/>
+							<h:message for="subcategoriaBeanExampleCodigosubcategoria" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="subcategoriaBeanExampleDescripcion" value="Descripcion:"/>
+						<h:panelGroup>
+							<h:inputText id="subcategoriaBeanExampleDescripcion" maxLength="250" value="#{subcategoriaBean.example.descripcion}"/>
+							<h:message for="subcategoriaBeanExampleDescripcion" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="subcategoriaBeanExampleFecharegistro" value="Fecharegistro:"/>
+						<h:panelGroup>
+							<h:inputText id="subcategoriaBeanExampleFecharegistro" maxLength="20" value="#{subcategoriaBean.example.fecharegistro}"/>
+							<h:message for="subcategoriaBeanExampleFecharegistro" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="subcategoriaBeanExampleFechamodificacion" value="Fechamodificacion:"/>
+						<h:panelGroup>
+							<h:inputText id="subcategoriaBeanExampleFechamodificacion" maxLength="20" value="#{subcategoriaBean.example.fechamodificacion}"/>
+							<h:message for="subcategoriaBeanExampleFechamodificacion" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+					</h:panelGrid>
+					<h:panelGroup styleClass="buttons">
+						<h:commandLink value="Search" action='#{subcategoriaBean.search}' styleClass="btn btn-primary"/>
+						<h:commandLink value="Create New" action='#{subcategoriaBean.create}' styleClass="btn btn-primary"/>
+					</h:panelGroup>
+				</h:panelGroup>
+			</f:validateBean>
+			
+			<h:dataTable id="subcategoriaBeanPageItems" styleClass="data-table" value="#{subcategoriaBean.pageItems}" var="_item">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Subcategoria"/>
+					</f:facet>
+					<h:link outcome="/subcategoria/view">
+						<f:param name="id" value="#{_item.idsubcategoria}"/>
+						<h:outputText id="itemSubcategoria" value="#{_item.subcategoria}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Codigosubcategoria"/>
+					</f:facet>
+					<h:link outcome="/subcategoria/view">
+						<f:param name="id" value="#{_item.idsubcategoria}"/>
+						<h:outputText id="itemCodigosubcategoria" value="#{_item.codigosubcategoria}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Descripcion"/>
+					</f:facet>
+					<h:link outcome="/subcategoria/view">
+						<f:param name="id" value="#{_item.idsubcategoria}"/>
+						<h:outputText id="itemDescripcion" value="#{_item.descripcion}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Fecharegistro"/>
+					</f:facet>
+					<h:link outcome="/subcategoria/view">
+						<f:param name="id" value="#{_item.idsubcategoria}"/>
+						<h:outputText id="itemFecharegistro" value="#{_item.fecharegistro}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Fechamodificacion"/>
+					</f:facet>
+					<h:link outcome="/subcategoria/view">
+						<f:param name="id" value="#{_item.idsubcategoria}"/>
+						<h:outputText id="itemFechamodificacion" value="#{_item.fechamodificacion}"/>
+					</h:link>
+				</h:column>
+			</h:dataTable>
+			<ui:include src="/resources/scaffold/paginator.xhtml">
+				<ui:param name="paginatorBean" value='#{subcategoriaBean}'/>
+			</ui:include>
+		</h:form>
+			
+	</ui:define>
+
+</ui:composition>

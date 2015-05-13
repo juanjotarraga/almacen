@@ -1,0 +1,118 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	template="/resources/scaffold/pageTemplate.xhtml">
+
+	<f:metadata>
+		<f:viewParam name="id" value='#{proveedorBean.id}'/>
+		<f:event type="preRenderView" listener='#{proveedorBean.retrieve}'/>
+	</f:metadata>
+
+	<ui:param name="pageTitle" value="Create Proveedor"/>
+
+	<ui:define name="header">
+		Proveedor
+	</ui:define>
+
+	<ui:define name="subheader">
+		<c:choose>
+			<c:when test='#{!empty proveedorBean.id}'>
+				Edit existing Proveedor
+			</c:when>
+			<c:otherwise>
+				Create a new Proveedor
+			</c:otherwise>
+		</c:choose>
+	</ui:define>
+
+	<ui:define name="footer"/>
+
+	<ui:define name="main">
+		<h:form id="create">
+			<h:messages globalOnly="true" styleClass="error"/>
+
+			<h:panelGrid columnClasses="label,component,required" columns="3">
+				<h:outputLabel for="proveedorBeanProveedorProveedor" value="Proveedor:"/>
+				<h:panelGroup>
+					<h:inputText id="proveedorBeanProveedorProveedor" maxLength="100" value="#{proveedorBean.proveedor.proveedor}"/>
+					<h:message for="proveedorBeanProveedorProveedor" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="proveedorBeanProveedorResponsable" value="Responsable:"/>
+				<h:panelGroup>
+					<h:inputText id="proveedorBeanProveedorResponsable" maxLength="100" value="#{proveedorBean.proveedor.responsable}"/>
+					<h:message for="proveedorBeanProveedorResponsable" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="proveedorBeanProveedorTelefono" value="Telefono:"/>
+				<h:panelGroup>
+					<h:inputText id="proveedorBeanProveedorTelefono" maxLength="30" value="#{proveedorBean.proveedor.telefono}"/>
+					<h:message for="proveedorBeanProveedorTelefono" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="proveedorBeanProveedorEmail" value="Email:"/>
+				<h:panelGroup>
+					<h:inputText id="proveedorBeanProveedorEmail" maxLength="60" value="#{proveedorBean.proveedor.email}"/>
+					<h:message for="proveedorBeanProveedorEmail" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="proveedorBeanProveedorDireccion" value="Direccion:"/>
+				<h:panelGroup>
+					<h:inputText id="proveedorBeanProveedorDireccion" maxLength="250" value="#{proveedorBean.proveedor.direccion}"/>
+					<h:message for="proveedorBeanProveedorDireccion" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="proveedorBeanProveedorRazonsocial" value="Razonsocial:"/>
+				<h:panelGroup>
+					<h:inputText id="proveedorBeanProveedorRazonsocial" maxLength="70" value="#{proveedorBean.proveedor.razonsocial}"/>
+					<h:message for="proveedorBeanProveedorRazonsocial" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="proveedorBeanProveedorFecharegistro" value="Fecharegistro:"/>
+				<h:panelGroup>
+					<h:inputText id="proveedorBeanProveedorFecharegistro" maxLength="20" value="#{proveedorBean.proveedor.fecharegistro}"/>
+					<h:message for="proveedorBeanProveedorFecharegistro" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="proveedorBeanProveedorFechamodificacion" value="Fechamodificacion:"/>
+				<h:panelGroup>
+					<h:inputText id="proveedorBeanProveedorFechamodificacion" maxLength="20" value="#{proveedorBean.proveedor.fechamodificacion}"/>
+					<h:message for="proveedorBeanProveedorFechamodificacion" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="proveedorBeanProveedorObservacion" value="Observacion:"/>
+				<h:panelGroup>
+					<h:inputText id="proveedorBeanProveedorObservacion" maxLength="250" value="#{proveedorBean.proveedor.observacion}"/>
+					<h:message for="proveedorBeanProveedorObservacion" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="proveedorBeanProveedorIdestado" value="Idestado:"/>
+				<h:panelGroup>
+					<h:inputText id="proveedorBeanProveedorIdestado" value="#{proveedorBean.proveedor.idestado}"/>
+					<h:message for="proveedorBeanProveedorIdestado" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+			</h:panelGrid>
+
+			<div class="buttons">
+				<h:commandLink value="Save" action='#{proveedorBean.update}' styleClass="btn btn-primary"/>
+				<c:choose>
+					<c:when test='#{!empty proveedorBean.id}'>
+						<h:link value="Cancel" outcome="view" styleClass="btn btn-primary">
+							<f:param name="id" value='#{proveedorBean.id}'/>
+						</h:link>
+						<h:commandLink value="Delete" action='#{proveedorBean.delete}' styleClass="btn btn-primary"/>
+					</c:when>
+					<c:otherwise>
+						<h:link value="Cancel" outcome="search" styleClass="btn btn-primary"/>
+					</c:otherwise>
+				</c:choose>
+			</div>
+		</h:form>
+	</ui:define>
+
+</ui:composition>

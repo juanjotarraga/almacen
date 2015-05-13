@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/resources/scaffold/pageTemplate.xhtml">
+
+	<f:metadata>
+		<f:viewParam name="id" value='#{ingresoBean.id}'/>
+		<f:event type="preRenderView" listener='#{ingresoBean.retrieve}'/>
+	</f:metadata>
+
+	<ui:param name="pageTitle" value="View Ingreso"/>
+
+	<ui:define name="header">
+		Ingreso
+	</ui:define>
+
+	<ui:define name="subheader">
+		View existing Ingreso
+	</ui:define>
+
+	<ui:define name="footer"/>
+
+	<ui:define name="main">
+		<h:panelGrid columnClasses="label,component,required" columns="3">
+			<h:outputLabel for="ingresoBeanIngresoCantidad" value="Cantidad:"/>
+			<h:outputText id="ingresoBeanIngresoCantidad" value="#{ingresoBean.ingreso.cantidad}"/>
+			<h:outputText/>
+			<h:outputLabel for="ingresoBeanIngresoPreciounitario" value="Preciounitario:"/>
+			<h:outputText id="ingresoBeanIngresoPreciounitario" value="#{ingresoBean.ingreso.preciounitario}"/>
+			<h:outputText/>
+			<h:outputLabel for="ingresoBeanIngresoPreciototal" value="Preciototal:"/>
+			<h:outputText id="ingresoBeanIngresoPreciototal" value="#{ingresoBean.ingreso.preciototal}"/>
+			<h:outputText/>
+			<h:outputLabel for="ingresoBeanIngresoFechaingreso" value="Fechaingreso:"/>
+			<h:outputText id="ingresoBeanIngresoFechaingreso" value="#{ingresoBean.ingreso.fechaingreso}"/>
+			<h:outputText/>
+			<h:outputLabel for="ingresoBeanIngresoNrofactura" value="Nrofactura:"/>
+			<h:outputText id="ingresoBeanIngresoNrofactura" value="#{ingresoBean.ingreso.nrofactura}"/>
+			<h:outputText/>
+			<h:outputLabel for="ingresoBeanIngresoFecharegistro" value="Fecharegistro:"/>
+			<h:outputText id="ingresoBeanIngresoFecharegistro" value="#{ingresoBean.ingreso.fecharegistro}"/>
+			<h:outputText/>
+			<h:outputLabel for="ingresoBeanIngresoFechamodificacion" value="Fechamodificacion:"/>
+			<h:outputText id="ingresoBeanIngresoFechamodificacion" value="#{ingresoBean.ingreso.fechamodificacion}"/>
+			<h:outputText/>
+			<h:outputLabel for="ingresoBeanIngresoObservacion" value="Observacion:"/>
+			<h:outputText id="ingresoBeanIngresoObservacion" value="#{ingresoBean.ingreso.observacion}"/>
+			<h:outputText/>
+			<h:outputLabel for="ingresoBeanIngresoIdkardex" value="Idkardex:"/>
+			<h:outputText id="ingresoBeanIngresoIdkardex" value="#{ingresoBean.ingreso.idkardex}"/>
+			<h:outputText/>
+			<h:outputLabel for="ingresoBeanIngresoIdestado" value="Idestado:"/>
+			<h:outputText id="ingresoBeanIngresoIdestado" value="#{ingresoBean.ingreso.idestado}"/>
+			<h:outputText/>
+			<h:outputLabel for="ingresoBeanIngresoIdtipomovimiento" value="Idtipomovimiento:"/>
+			<h:outputText id="ingresoBeanIngresoIdtipomovimiento" value="#{ingresoBean.ingreso.idtipomovimiento}"/>
+			<h:outputText/>
+			<h:outputLabel for="ingresoBeanIngresoIddetallesolicitud" value="Iddetallesolicitud:"/>
+			<h:outputText id="ingresoBeanIngresoIddetallesolicitud" value="#{ingresoBean.ingreso.iddetallesolicitud}"/>
+			<h:outputText/>
+			<h:outputLabel for="ingresoBeanIngresoIdusuario" value="Idusuario:"/>
+			<h:outputText id="ingresoBeanIngresoIdusuario" value="#{ingresoBean.ingreso.idusuario}"/>
+			<h:outputText/>
+		</h:panelGrid>
+
+		<div class="buttons">
+			<h:link value="View All" outcome="search" styleClass="btn btn-primary"/> 
+			<h:link value="Edit" outcome="create" includeViewParams="true" styleClass="btn btn-primary"/>
+			<h:link value="Create New" outcome="create" styleClass="btn btn-primary"/>
+		</div>
+	</ui:define>
+
+</ui:composition>

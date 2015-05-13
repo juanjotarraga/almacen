@@ -1,0 +1,124 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/resources/scaffold/pageTemplate.xhtml">
+
+	<f:metadata>
+		<f:viewParam name="page" value='#{kardexBean.page}'/>
+		<f:event type="preRenderView" listener='#{kardexBean.paginate}'/>
+	</f:metadata>
+
+	<ui:param name="pageTitle" value="Search Kardex entities"/>
+
+	<ui:define name="header">
+		Kardex
+	</ui:define>
+
+	<ui:define name="subheader">
+		Search Kardex entities
+	</ui:define>
+
+	<ui:define name="footer"/>
+
+	<ui:define name="main">
+		<h:form id="search">
+			<f:validateBean disabled="true">
+				<h:panelGroup styleClass="search">
+
+					<h:panelGrid columnClasses="label,component,required" columns="3">
+						<h:outputLabel for="kardexBeanExampleDescripcion" value="Descripcion:"/>
+						<h:panelGroup>
+							<h:inputText id="kardexBeanExampleDescripcion" maxLength="250" value="#{kardexBean.example.descripcion}"/>
+							<h:message for="kardexBeanExampleDescripcion" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="kardexBeanExampleNroestante" value="Nroestante:"/>
+						<h:panelGroup>
+							<h:inputText id="kardexBeanExampleNroestante" maxLength="20" value="#{kardexBean.example.nroestante}"/>
+							<h:message for="kardexBeanExampleNroestante" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="kardexBeanExampleFecharegistro" value="Fecharegistro:"/>
+						<h:panelGroup>
+							<h:inputText id="kardexBeanExampleFecharegistro" maxLength="20" value="#{kardexBean.example.fecharegistro}"/>
+							<h:message for="kardexBeanExampleFecharegistro" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="kardexBeanExampleFechamodificacion" value="Fechamodificacion:"/>
+						<h:panelGroup>
+							<h:inputText id="kardexBeanExampleFechamodificacion" maxLength="20" value="#{kardexBean.example.fechamodificacion}"/>
+							<h:message for="kardexBeanExampleFechamodificacion" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="kardexBeanExampleIdalmacenmaterial" value="Idalmacenmaterial:"/>
+						<h:panelGroup>
+							<h:inputText id="kardexBeanExampleIdalmacenmaterial" value="#{kardexBean.example.idalmacenmaterial}"/>
+							<h:message for="kardexBeanExampleIdalmacenmaterial" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+					</h:panelGrid>
+					<h:panelGroup styleClass="buttons">
+						<h:commandLink value="Search" action='#{kardexBean.search}' styleClass="btn btn-primary"/>
+						<h:commandLink value="Create New" action='#{kardexBean.create}' styleClass="btn btn-primary"/>
+					</h:panelGroup>
+				</h:panelGroup>
+			</f:validateBean>
+			
+			<h:dataTable id="kardexBeanPageItems" styleClass="data-table" value="#{kardexBean.pageItems}" var="_item">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Descripcion"/>
+					</f:facet>
+					<h:link outcome="/kardex/view">
+						<f:param name="id" value="#{_item.idkardex}"/>
+						<h:outputText id="itemDescripcion" value="#{_item.descripcion}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Nroestante"/>
+					</f:facet>
+					<h:link outcome="/kardex/view">
+						<f:param name="id" value="#{_item.idkardex}"/>
+						<h:outputText id="itemNroestante" value="#{_item.nroestante}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Fecharegistro"/>
+					</f:facet>
+					<h:link outcome="/kardex/view">
+						<f:param name="id" value="#{_item.idkardex}"/>
+						<h:outputText id="itemFecharegistro" value="#{_item.fecharegistro}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Fechamodificacion"/>
+					</f:facet>
+					<h:link outcome="/kardex/view">
+						<f:param name="id" value="#{_item.idkardex}"/>
+						<h:outputText id="itemFechamodificacion" value="#{_item.fechamodificacion}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Idalmacenmaterial"/>
+					</f:facet>
+					<h:link outcome="/kardex/view">
+						<f:param name="id" value="#{_item.idkardex}"/>
+						<h:outputText id="itemIdalmacenmaterial" value="#{_item.idalmacenmaterial}"/>
+					</h:link>
+				</h:column>
+			</h:dataTable>
+			<ui:include src="/resources/scaffold/paginator.xhtml">
+				<ui:param name="paginatorBean" value='#{kardexBean}'/>
+			</ui:include>
+		</h:form>
+			
+	</ui:define>
+
+</ui:composition>

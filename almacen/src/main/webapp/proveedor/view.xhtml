@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/resources/scaffold/pageTemplate.xhtml">
+
+	<f:metadata>
+		<f:viewParam name="id" value='#{proveedorBean.id}'/>
+		<f:event type="preRenderView" listener='#{proveedorBean.retrieve}'/>
+	</f:metadata>
+
+	<ui:param name="pageTitle" value="View Proveedor"/>
+
+	<ui:define name="header">
+		Proveedor
+	</ui:define>
+
+	<ui:define name="subheader">
+		View existing Proveedor
+	</ui:define>
+
+	<ui:define name="footer"/>
+
+	<ui:define name="main">
+		<h:panelGrid columnClasses="label,component,required" columns="3">
+			<h:outputLabel for="proveedorBeanProveedorProveedor" value="Proveedor:"/>
+			<h:outputText id="proveedorBeanProveedorProveedor" value="#{proveedorBean.proveedor.proveedor}"/>
+			<h:outputText/>
+			<h:outputLabel for="proveedorBeanProveedorResponsable" value="Responsable:"/>
+			<h:outputText id="proveedorBeanProveedorResponsable" value="#{proveedorBean.proveedor.responsable}"/>
+			<h:outputText/>
+			<h:outputLabel for="proveedorBeanProveedorTelefono" value="Telefono:"/>
+			<h:outputText id="proveedorBeanProveedorTelefono" value="#{proveedorBean.proveedor.telefono}"/>
+			<h:outputText/>
+			<h:outputLabel for="proveedorBeanProveedorEmail" value="Email:"/>
+			<h:outputText id="proveedorBeanProveedorEmail" value="#{proveedorBean.proveedor.email}"/>
+			<h:outputText/>
+			<h:outputLabel for="proveedorBeanProveedorDireccion" value="Direccion:"/>
+			<h:outputText id="proveedorBeanProveedorDireccion" value="#{proveedorBean.proveedor.direccion}"/>
+			<h:outputText/>
+			<h:outputLabel for="proveedorBeanProveedorRazonsocial" value="Razonsocial:"/>
+			<h:outputText id="proveedorBeanProveedorRazonsocial" value="#{proveedorBean.proveedor.razonsocial}"/>
+			<h:outputText/>
+			<h:outputLabel for="proveedorBeanProveedorFecharegistro" value="Fecharegistro:"/>
+			<h:outputText id="proveedorBeanProveedorFecharegistro" value="#{proveedorBean.proveedor.fecharegistro}"/>
+			<h:outputText/>
+			<h:outputLabel for="proveedorBeanProveedorFechamodificacion" value="Fechamodificacion:"/>
+			<h:outputText id="proveedorBeanProveedorFechamodificacion" value="#{proveedorBean.proveedor.fechamodificacion}"/>
+			<h:outputText/>
+			<h:outputLabel for="proveedorBeanProveedorObservacion" value="Observacion:"/>
+			<h:outputText id="proveedorBeanProveedorObservacion" value="#{proveedorBean.proveedor.observacion}"/>
+			<h:outputText/>
+			<h:outputLabel for="proveedorBeanProveedorIdestado" value="Idestado:"/>
+			<h:outputText id="proveedorBeanProveedorIdestado" value="#{proveedorBean.proveedor.idestado}"/>
+			<h:outputText/>
+		</h:panelGrid>
+
+		<div class="buttons">
+			<h:link value="View All" outcome="search" styleClass="btn btn-primary"/> 
+			<h:link value="Edit" outcome="create" includeViewParams="true" styleClass="btn btn-primary"/>
+			<h:link value="Create New" outcome="create" styleClass="btn btn-primary"/>
+		</div>
+	</ui:define>
+
+</ui:composition>

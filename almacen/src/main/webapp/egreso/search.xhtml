@@ -1,0 +1,124 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/resources/scaffold/pageTemplate.xhtml">
+
+	<f:metadata>
+		<f:viewParam name="page" value='#{egresoBean.page}'/>
+		<f:event type="preRenderView" listener='#{egresoBean.paginate}'/>
+	</f:metadata>
+
+	<ui:param name="pageTitle" value="Search Egreso entities"/>
+
+	<ui:define name="header">
+		Egreso
+	</ui:define>
+
+	<ui:define name="subheader">
+		Search Egreso entities
+	</ui:define>
+
+	<ui:define name="footer"/>
+
+	<ui:define name="main">
+		<h:form id="search">
+			<f:validateBean disabled="true">
+				<h:panelGroup styleClass="search">
+
+					<h:panelGrid columnClasses="label,component,required" columns="3">
+						<h:outputLabel for="egresoBeanExampleCantidad" value="Cantidad:"/>
+						<h:panelGroup>
+							<h:inputText id="egresoBeanExampleCantidad" value="#{egresoBean.example.cantidad}"/>
+							<h:message for="egresoBeanExampleCantidad" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="egresoBeanExampleFechaingreso" value="Fechaingreso:"/>
+						<h:panelGroup>
+							<h:inputText id="egresoBeanExampleFechaingreso" maxLength="20" value="#{egresoBean.example.fechaingreso}"/>
+							<h:message for="egresoBeanExampleFechaingreso" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="egresoBeanExampleFecharegistro" value="Fecharegistro:"/>
+						<h:panelGroup>
+							<h:inputText id="egresoBeanExampleFecharegistro" maxLength="20" value="#{egresoBean.example.fecharegistro}"/>
+							<h:message for="egresoBeanExampleFecharegistro" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="egresoBeanExampleFechamodificacion" value="Fechamodificacion:"/>
+						<h:panelGroup>
+							<h:inputText id="egresoBeanExampleFechamodificacion" maxLength="20" value="#{egresoBean.example.fechamodificacion}"/>
+							<h:message for="egresoBeanExampleFechamodificacion" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="egresoBeanExampleObservacion" value="Observacion:"/>
+						<h:panelGroup>
+							<h:inputText id="egresoBeanExampleObservacion" maxLength="250" value="#{egresoBean.example.observacion}"/>
+							<h:message for="egresoBeanExampleObservacion" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+					</h:panelGrid>
+					<h:panelGroup styleClass="buttons">
+						<h:commandLink value="Search" action='#{egresoBean.search}' styleClass="btn btn-primary"/>
+						<h:commandLink value="Create New" action='#{egresoBean.create}' styleClass="btn btn-primary"/>
+					</h:panelGroup>
+				</h:panelGroup>
+			</f:validateBean>
+			
+			<h:dataTable id="egresoBeanPageItems" styleClass="data-table" value="#{egresoBean.pageItems}" var="_item">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Cantidad"/>
+					</f:facet>
+					<h:link outcome="/egreso/view">
+						<f:param name="id" value="#{_item.idegreso}"/>
+						<h:outputText id="itemCantidad" value="#{_item.cantidad}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Preciounitario"/>
+					</f:facet>
+					<h:link outcome="/egreso/view">
+						<f:param name="id" value="#{_item.idegreso}"/>
+						<h:outputText id="itemPreciounitario" value="#{_item.preciounitario}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Preciototal"/>
+					</f:facet>
+					<h:link outcome="/egreso/view">
+						<f:param name="id" value="#{_item.idegreso}"/>
+						<h:outputText id="itemPreciototal" value="#{_item.preciototal}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Fechaingreso"/>
+					</f:facet>
+					<h:link outcome="/egreso/view">
+						<f:param name="id" value="#{_item.idegreso}"/>
+						<h:outputText id="itemFechaingreso" value="#{_item.fechaingreso}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Fecharegistro"/>
+					</f:facet>
+					<h:link outcome="/egreso/view">
+						<f:param name="id" value="#{_item.idegreso}"/>
+						<h:outputText id="itemFecharegistro" value="#{_item.fecharegistro}"/>
+					</h:link>
+				</h:column>
+			</h:dataTable>
+			<ui:include src="/resources/scaffold/paginator.xhtml">
+				<ui:param name="paginatorBean" value='#{egresoBean}'/>
+			</ui:include>
+		</h:form>
+			
+	</ui:define>
+
+</ui:composition>

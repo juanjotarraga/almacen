@@ -1,0 +1,106 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	template="/resources/scaffold/pageTemplate.xhtml">
+
+	<f:metadata>
+		<f:viewParam name="id" value='#{materialBean.id}'/>
+		<f:event type="preRenderView" listener='#{materialBean.retrieve}'/>
+	</f:metadata>
+
+	<ui:param name="pageTitle" value="Create Material"/>
+
+	<ui:define name="header">
+		Material
+	</ui:define>
+
+	<ui:define name="subheader">
+		<c:choose>
+			<c:when test='#{!empty materialBean.id}'>
+				Edit existing Material
+			</c:when>
+			<c:otherwise>
+				Create a new Material
+			</c:otherwise>
+		</c:choose>
+	</ui:define>
+
+	<ui:define name="footer"/>
+
+	<ui:define name="main">
+		<h:form id="create">
+			<h:messages globalOnly="true" styleClass="error"/>
+
+			<h:panelGrid columnClasses="label,component,required" columns="3">
+				<h:outputLabel for="materialBeanMaterialCodigomaterial" value="Codigomaterial:"/>
+				<h:panelGroup>
+					<h:inputText id="materialBeanMaterialCodigomaterial" maxLength="50" required="true" value="#{materialBean.material.codigomaterial}"/>
+					<h:message for="materialBeanMaterialCodigomaterial" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText value="*"/>
+				<h:outputLabel for="materialBeanMaterialDescripcion" value="Descripcion:"/>
+				<h:panelGroup>
+					<h:inputText id="materialBeanMaterialDescripcion" maxLength="250" required="true" value="#{materialBean.material.descripcion}"/>
+					<h:message for="materialBeanMaterialDescripcion" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText value="*"/>
+				<h:outputLabel for="materialBeanMaterialFecharegistro" value="Fecharegistro:"/>
+				<h:panelGroup>
+					<h:inputText id="materialBeanMaterialFecharegistro" maxLength="20" value="#{materialBean.material.fecharegistro}"/>
+					<h:message for="materialBeanMaterialFecharegistro" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="materialBeanMaterialFechamodificacion" value="Fechamodificacion:"/>
+				<h:panelGroup>
+					<h:inputText id="materialBeanMaterialFechamodificacion" maxLength="20" value="#{materialBean.material.fechamodificacion}"/>
+					<h:message for="materialBeanMaterialFechamodificacion" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="materialBeanMaterialIdunidadmedida" value="Idunidadmedida:"/>
+				<h:panelGroup>
+					<h:inputText id="materialBeanMaterialIdunidadmedida" value="#{materialBean.material.idunidadmedida}"/>
+					<h:message for="materialBeanMaterialIdunidadmedida" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="materialBeanMaterialIdsubcategoria" value="Idsubcategoria:"/>
+				<h:panelGroup>
+					<h:inputText id="materialBeanMaterialIdsubcategoria" value="#{materialBean.material.idsubcategoria}"/>
+					<h:message for="materialBeanMaterialIdsubcategoria" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="materialBeanMaterialIdestado" value="Idestado:"/>
+				<h:panelGroup>
+					<h:inputText id="materialBeanMaterialIdestado" value="#{materialBean.material.idestado}"/>
+					<h:message for="materialBeanMaterialIdestado" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="materialBeanMaterialIdusuario" value="Idusuario:"/>
+				<h:panelGroup>
+					<h:inputText id="materialBeanMaterialIdusuario" value="#{materialBean.material.idusuario}"/>
+					<h:message for="materialBeanMaterialIdusuario" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+			</h:panelGrid>
+
+			<div class="buttons">
+				<h:commandLink value="Save" action='#{materialBean.update}' styleClass="btn btn-primary"/>
+				<c:choose>
+					<c:when test='#{!empty materialBean.id}'>
+						<h:link value="Cancel" outcome="view" styleClass="btn btn-primary">
+							<f:param name="id" value='#{materialBean.id}'/>
+						</h:link>
+						<h:commandLink value="Delete" action='#{materialBean.delete}' styleClass="btn btn-primary"/>
+					</c:when>
+					<c:otherwise>
+						<h:link value="Cancel" outcome="search" styleClass="btn btn-primary"/>
+					</c:otherwise>
+				</c:choose>
+			</div>
+		</h:form>
+	</ui:define>
+
+</ui:composition>

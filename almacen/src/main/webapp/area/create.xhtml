@@ -1,0 +1,94 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	template="/resources/scaffold/pageTemplate.xhtml">
+
+	<f:metadata>
+		<f:viewParam name="id" value='#{areaBean.id}'/>
+		<f:event type="preRenderView" listener='#{areaBean.retrieve}'/>
+	</f:metadata>
+
+	<ui:param name="pageTitle" value="Create Area"/>
+
+	<ui:define name="header">
+		Area
+	</ui:define>
+
+	<ui:define name="subheader">
+		<c:choose>
+			<c:when test='#{!empty areaBean.id}'>
+				Edit existing Area
+			</c:when>
+			<c:otherwise>
+				Create a new Area
+			</c:otherwise>
+		</c:choose>
+	</ui:define>
+
+	<ui:define name="footer"/>
+
+	<ui:define name="main">
+		<h:form id="create">
+			<h:messages globalOnly="true" styleClass="error"/>
+
+			<h:panelGrid columnClasses="label,component,required" columns="3">
+				<h:outputLabel for="areaBeanAreaArea" value="Area:"/>
+				<h:panelGroup>
+					<h:inputText id="areaBeanAreaArea" maxLength="50" required="true" value="#{areaBean.area.area}"/>
+					<h:message for="areaBeanAreaArea" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText value="*"/>
+				<h:outputLabel for="areaBeanAreaDescripcion" value="Descripcion:"/>
+				<h:panelGroup>
+					<h:inputText id="areaBeanAreaDescripcion" maxLength="250" required="true" value="#{areaBean.area.descripcion}"/>
+					<h:message for="areaBeanAreaDescripcion" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText value="*"/>
+				<h:outputLabel for="areaBeanAreaFecharegistro" value="Fecharegistro:"/>
+				<h:panelGroup>
+					<h:inputText id="areaBeanAreaFecharegistro" maxLength="20" required="true" value="#{areaBean.area.fecharegistro}"/>
+					<h:message for="areaBeanAreaFecharegistro" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText value="*"/>
+				<h:outputLabel for="areaBeanAreaFechamodificacion" value="Fechamodificacion:"/>
+				<h:panelGroup>
+					<h:inputText id="areaBeanAreaFechamodificacion" maxLength="20" required="true" value="#{areaBean.area.fechamodificacion}"/>
+					<h:message for="areaBeanAreaFechamodificacion" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText value="*"/>
+				<h:outputLabel for="areaBeanAreaIdcentro" value="Idcentro:"/>
+				<h:panelGroup>
+					<h:inputText id="areaBeanAreaIdcentro" value="#{areaBean.area.idcentro}"/>
+					<h:message for="areaBeanAreaIdcentro" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="areaBeanAreaIdestado" value="Idestado:"/>
+				<h:panelGroup>
+					<h:inputText id="areaBeanAreaIdestado" value="#{areaBean.area.idestado}"/>
+					<h:message for="areaBeanAreaIdestado" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+			</h:panelGrid>
+
+			<div class="buttons">
+				<h:commandLink value="Save" action='#{areaBean.update}' styleClass="btn btn-primary"/>
+				<c:choose>
+					<c:when test='#{!empty areaBean.id}'>
+						<h:link value="Cancel" outcome="view" styleClass="btn btn-primary">
+							<f:param name="id" value='#{areaBean.id}'/>
+						</h:link>
+						<h:commandLink value="Delete" action='#{areaBean.delete}' styleClass="btn btn-primary"/>
+					</c:when>
+					<c:otherwise>
+						<h:link value="Cancel" outcome="search" styleClass="btn btn-primary"/>
+					</c:otherwise>
+				</c:choose>
+			</div>
+		</h:form>
+	</ui:define>
+
+</ui:composition>

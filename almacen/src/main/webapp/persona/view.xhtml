@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/resources/scaffold/pageTemplate.xhtml">
+
+	<f:metadata>
+		<f:viewParam name="id" value='#{personaBean.id}'/>
+		<f:event type="preRenderView" listener='#{personaBean.retrieve}'/>
+	</f:metadata>
+
+	<ui:param name="pageTitle" value="View Persona"/>
+
+	<ui:define name="header">
+		Persona
+	</ui:define>
+
+	<ui:define name="subheader">
+		View existing Persona
+	</ui:define>
+
+	<ui:define name="footer"/>
+
+	<ui:define name="main">
+		<h:panelGrid columnClasses="label,component,required" columns="3">
+			<h:outputLabel for="personaBeanPersonaNombrepersona" value="Nombrepersona:"/>
+			<h:outputText id="personaBeanPersonaNombrepersona" value="#{personaBean.persona.nombrepersona}"/>
+			<h:outputText/>
+			<h:outputLabel for="personaBeanPersonaApellidopaterno" value="Apellidopaterno:"/>
+			<h:outputText id="personaBeanPersonaApellidopaterno" value="#{personaBean.persona.apellidopaterno}"/>
+			<h:outputText/>
+			<h:outputLabel for="personaBeanPersonaApellidomaterno" value="Apellidomaterno:"/>
+			<h:outputText id="personaBeanPersonaApellidomaterno" value="#{personaBean.persona.apellidomaterno}"/>
+			<h:outputText/>
+			<h:outputLabel for="personaBeanPersonaCi" value="Ci:"/>
+			<h:outputText id="personaBeanPersonaCi" value="#{personaBean.persona.ci}"/>
+			<h:outputText/>
+			<h:outputLabel for="personaBeanPersonaFechanacimiento" value="Fechanacimiento:"/>
+			<h:outputText id="personaBeanPersonaFechanacimiento" value="#{personaBean.persona.fechanacimiento}"/>
+			<h:outputText/>
+			<h:outputLabel for="personaBeanPersonaFecharegistro" value="Fecharegistro:"/>
+			<h:outputText id="personaBeanPersonaFecharegistro" value="#{personaBean.persona.fecharegistro}"/>
+			<h:outputText/>
+			<h:outputLabel for="personaBeanPersonaFechamodificacion" value="Fechamodificacion:"/>
+			<h:outputText id="personaBeanPersonaFechamodificacion" value="#{personaBean.persona.fechamodificacion}"/>
+			<h:outputText/>
+			<h:outputLabel for="personaBeanPersonaCorreo" value="Correo:"/>
+			<h:outputText id="personaBeanPersonaCorreo" value="#{personaBean.persona.correo}"/>
+			<h:outputText/>
+			<h:outputLabel for="personaBeanPersonaTelefono" value="Telefono:"/>
+			<h:outputText id="personaBeanPersonaTelefono" value="#{personaBean.persona.telefono}"/>
+			<h:outputText/>
+			<h:outputLabel for="personaBeanPersonaIdestado" value="Idestado:"/>
+			<h:outputText id="personaBeanPersonaIdestado" value="#{personaBean.persona.idestado}"/>
+			<h:outputText/>
+			<h:outputLabel for="personaBeanPersonaIdreparticion" value="Idreparticion:"/>
+			<h:outputText id="personaBeanPersonaIdreparticion" value="#{personaBean.persona.idreparticion}"/>
+			<h:outputText/>
+			<h:outputLabel for="personaBeanPersonaIdsexo" value="Idsexo:"/>
+			<h:outputText id="personaBeanPersonaIdsexo" value="#{personaBean.persona.idsexo}"/>
+			<h:outputText/>
+			<h:outputLabel for="personaBeanPersonaIdcargo" value="Idcargo:"/>
+			<h:outputText id="personaBeanPersonaIdcargo" value="#{personaBean.persona.idcargo}"/>
+			<h:outputText/>
+		</h:panelGrid>
+
+		<div class="buttons">
+			<h:link value="View All" outcome="search" styleClass="btn btn-primary"/> 
+			<h:link value="Edit" outcome="create" includeViewParams="true" styleClass="btn btn-primary"/>
+			<h:link value="Create New" outcome="create" styleClass="btn btn-primary"/>
+		</div>
+	</ui:define>
+
+</ui:composition>

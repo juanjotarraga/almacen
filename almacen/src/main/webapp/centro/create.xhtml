@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	template="/resources/scaffold/pageTemplate.xhtml">
+
+	<f:metadata>
+		<f:viewParam name="id" value='#{centroBean.id}'/>
+		<f:event type="preRenderView" listener='#{centroBean.retrieve}'/>
+	</f:metadata>
+
+	<ui:param name="pageTitle" value="Create Centro"/>
+
+	<ui:define name="header">
+		Centro
+	</ui:define>
+
+	<ui:define name="subheader">
+		<c:choose>
+			<c:when test='#{!empty centroBean.id}'>
+				Edit existing Centro
+			</c:when>
+			<c:otherwise>
+				Create a new Centro
+			</c:otherwise>
+		</c:choose>
+	</ui:define>
+
+	<ui:define name="footer"/>
+
+	<ui:define name="main">
+		<h:form id="create">
+			<h:messages globalOnly="true" styleClass="error"/>
+
+			<h:panelGrid columnClasses="label,component,required" columns="3">
+				<h:outputLabel for="centroBeanCentroCentro" value="Centro:"/>
+				<h:panelGroup>
+					<h:inputText id="centroBeanCentroCentro" maxLength="50" required="true" value="#{centroBean.centro.centro}"/>
+					<h:message for="centroBeanCentroCentro" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText value="*"/>
+				<h:outputLabel for="centroBeanCentroDescripcion" value="Descripcion:"/>
+				<h:panelGroup>
+					<h:inputText id="centroBeanCentroDescripcion" maxLength="250" required="true" value="#{centroBean.centro.descripcion}"/>
+					<h:message for="centroBeanCentroDescripcion" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText value="*"/>
+				<h:outputLabel for="centroBeanCentroFecharegistro" value="Fecharegistro:"/>
+				<h:panelGroup>
+					<h:inputText id="centroBeanCentroFecharegistro" maxLength="20" required="true" value="#{centroBean.centro.fecharegistro}"/>
+					<h:message for="centroBeanCentroFecharegistro" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText value="*"/>
+				<h:outputLabel for="centroBeanCentroFechamodificacion" value="Fechamodificacion:"/>
+				<h:panelGroup>
+					<h:inputText id="centroBeanCentroFechamodificacion" maxLength="20" required="true" value="#{centroBean.centro.fechamodificacion}"/>
+					<h:message for="centroBeanCentroFechamodificacion" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText value="*"/>
+				<h:outputLabel for="centroBeanCentroIdestado" value="Idestado:"/>
+				<h:panelGroup>
+					<h:inputText id="centroBeanCentroIdestado" value="#{centroBean.centro.idestado}"/>
+					<h:message for="centroBeanCentroIdestado" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+			</h:panelGrid>
+
+			<div class="buttons">
+				<h:commandLink value="Save" action='#{centroBean.update}' styleClass="btn btn-primary"/>
+				<c:choose>
+					<c:when test='#{!empty centroBean.id}'>
+						<h:link value="Cancel" outcome="view" styleClass="btn btn-primary">
+							<f:param name="id" value='#{centroBean.id}'/>
+						</h:link>
+						<h:commandLink value="Delete" action='#{centroBean.delete}' styleClass="btn btn-primary"/>
+					</c:when>
+					<c:otherwise>
+						<h:link value="Cancel" outcome="search" styleClass="btn btn-primary"/>
+					</c:otherwise>
+				</c:choose>
+			</div>
+		</h:form>
+	</ui:define>
+
+</ui:composition>

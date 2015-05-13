@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/resources/scaffold/pageTemplate.xhtml">
+
+	<f:metadata>
+		<f:viewParam name="id" value='#{tiposolicitudBean.id}'/>
+		<f:event type="preRenderView" listener='#{tiposolicitudBean.retrieve}'/>
+	</f:metadata>
+
+	<ui:param name="pageTitle" value="View Tiposolicitud"/>
+
+	<ui:define name="header">
+		Tiposolicitud
+	</ui:define>
+
+	<ui:define name="subheader">
+		View existing Tiposolicitud
+	</ui:define>
+
+	<ui:define name="footer"/>
+
+	<ui:define name="main">
+		<h:panelGrid columnClasses="label,component,required" columns="3">
+			<h:outputLabel for="tiposolicitudBeanTiposolicitudTiposolicitud" value="Tiposolicitud:"/>
+			<h:outputText id="tiposolicitudBeanTiposolicitudTiposolicitud" value="#{tiposolicitudBean.tiposolicitud.tiposolicitud}"/>
+			<h:outputText/>
+			<h:outputLabel for="tiposolicitudBeanTiposolicitudObservacion" value="Observacion:"/>
+			<h:outputText id="tiposolicitudBeanTiposolicitudObservacion" value="#{tiposolicitudBean.tiposolicitud.observacion}"/>
+			<h:outputText/>
+			<h:outputLabel for="tiposolicitudBeanTiposolicitudFecharegistro" value="Fecharegistro:"/>
+			<h:outputText id="tiposolicitudBeanTiposolicitudFecharegistro" value="#{tiposolicitudBean.tiposolicitud.fecharegistro}"/>
+			<h:outputText/>
+			<h:outputLabel for="tiposolicitudBeanTiposolicitudFechamodificacion" value="Fechamodificacion:"/>
+			<h:outputText id="tiposolicitudBeanTiposolicitudFechamodificacion" value="#{tiposolicitudBean.tiposolicitud.fechamodificacion}"/>
+			<h:outputText/>
+			<h:outputLabel for="tiposolicitudBeanTiposolicitudIdestado" value="Idestado:"/>
+			<h:outputText id="tiposolicitudBeanTiposolicitudIdestado" value="#{tiposolicitudBean.tiposolicitud.idestado}"/>
+			<h:outputText/>
+		</h:panelGrid>
+
+		<div class="buttons">
+			<h:link value="View All" outcome="search" styleClass="btn btn-primary"/> 
+			<h:link value="Edit" outcome="create" includeViewParams="true" styleClass="btn btn-primary"/>
+			<h:link value="Create New" outcome="create" styleClass="btn btn-primary"/>
+		</div>
+	</ui:define>
+
+</ui:composition>

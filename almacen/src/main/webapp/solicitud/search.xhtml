@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/resources/scaffold/pageTemplate.xhtml">
+
+	<f:metadata>
+		<f:viewParam name="page" value='#{solicitudBean.page}'/>
+		<f:event type="preRenderView" listener='#{solicitudBean.paginate}'/>
+	</f:metadata>
+
+	<ui:param name="pageTitle" value="Search Solicitud entities"/>
+
+	<ui:define name="header">
+		Solicitud
+	</ui:define>
+
+	<ui:define name="subheader">
+		Search Solicitud entities
+	</ui:define>
+
+	<ui:define name="footer"/>
+
+	<ui:define name="main">
+		<h:form id="search">
+			<f:validateBean disabled="true">
+				<h:panelGroup styleClass="search">
+
+					<h:panelGrid columnClasses="label,component,required" columns="3">
+						<h:outputLabel for="solicitudBeanExampleSolicitud" value="Solicitud:"/>
+						<h:panelGroup>
+							<h:inputText id="solicitudBeanExampleSolicitud" maxLength="100" value="#{solicitudBean.example.solicitud}"/>
+							<h:message for="solicitudBeanExampleSolicitud" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="solicitudBeanExampleCodigosolicitud" value="Codigosolicitud:"/>
+						<h:panelGroup>
+							<h:inputText id="solicitudBeanExampleCodigosolicitud" maxLength="30" value="#{solicitudBean.example.codigosolicitud}"/>
+							<h:message for="solicitudBeanExampleCodigosolicitud" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="solicitudBeanExampleFechasolicitud" value="Fechasolicitud:"/>
+						<h:panelGroup>
+							<h:inputText id="solicitudBeanExampleFechasolicitud" maxLength="10" value="#{solicitudBean.example.fechasolicitud}"/>
+							<h:message for="solicitudBeanExampleFechasolicitud" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="solicitudBeanExampleObservacion" value="Observacion:"/>
+						<h:panelGroup>
+							<h:inputText id="solicitudBeanExampleObservacion" maxLength="250" value="#{solicitudBean.example.observacion}"/>
+							<h:message for="solicitudBeanExampleObservacion" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="solicitudBeanExampleFecharegistro" value="Fecharegistro:"/>
+						<h:panelGroup>
+							<h:inputText id="solicitudBeanExampleFecharegistro" maxLength="20" value="#{solicitudBean.example.fecharegistro}"/>
+							<h:message for="solicitudBeanExampleFecharegistro" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+					</h:panelGrid>
+					<h:panelGroup styleClass="buttons">
+						<h:commandLink value="Search" action='#{solicitudBean.search}' styleClass="btn btn-primary"/>
+						<h:commandLink value="Create New" action='#{solicitudBean.create}' styleClass="btn btn-primary"/>
+					</h:panelGroup>
+				</h:panelGroup>
+			</f:validateBean>
+			
+			<h:dataTable id="solicitudBeanPageItems" styleClass="data-table" value="#{solicitudBean.pageItems}" var="_item">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Solicitud"/>
+					</f:facet>
+					<h:link outcome="/solicitud/view">
+						<f:param name="id" value="#{_item.idsolicitud}"/>
+						<h:outputText id="itemSolicitud" value="#{_item.solicitud}"/>
+					</h:link>
+				</h:column>
+			</h:dataTable>
+			<ui:include src="/resources/scaffold/paginator.xhtml">
+				<ui:param name="paginatorBean" value='#{solicitudBean}'/>
+			</ui:include>
+		</h:form>
+			
+	</ui:define>
+
+</ui:composition>

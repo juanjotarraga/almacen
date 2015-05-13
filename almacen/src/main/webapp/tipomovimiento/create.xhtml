@@ -1,0 +1,94 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	template="/resources/scaffold/pageTemplate.xhtml">
+
+	<f:metadata>
+		<f:viewParam name="id" value='#{tipomovimientoBean.id}'/>
+		<f:event type="preRenderView" listener='#{tipomovimientoBean.retrieve}'/>
+	</f:metadata>
+
+	<ui:param name="pageTitle" value="Create Tipomovimiento"/>
+
+	<ui:define name="header">
+		Tipomovimiento
+	</ui:define>
+
+	<ui:define name="subheader">
+		<c:choose>
+			<c:when test='#{!empty tipomovimientoBean.id}'>
+				Edit existing Tipomovimiento
+			</c:when>
+			<c:otherwise>
+				Create a new Tipomovimiento
+			</c:otherwise>
+		</c:choose>
+	</ui:define>
+
+	<ui:define name="footer"/>
+
+	<ui:define name="main">
+		<h:form id="create">
+			<h:messages globalOnly="true" styleClass="error"/>
+
+			<h:panelGrid columnClasses="label,component,required" columns="3">
+				<h:outputLabel for="tipomovimientoBeanTipomovimientoTipomovimiento" value="Tipomovimiento:"/>
+				<h:panelGroup>
+					<h:inputText id="tipomovimientoBeanTipomovimientoTipomovimiento" maxLength="50" value="#{tipomovimientoBean.tipomovimiento.tipomovimiento}"/>
+					<h:message for="tipomovimientoBeanTipomovimientoTipomovimiento" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="tipomovimientoBeanTipomovimientoEntradasalida" value="Entradasalida:"/>
+				<h:panelGroup>
+					<h:inputText id="tipomovimientoBeanTipomovimientoEntradasalida" value="#{tipomovimientoBean.tipomovimiento.entradasalida}"/>
+					<h:message for="tipomovimientoBeanTipomovimientoEntradasalida" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="tipomovimientoBeanTipomovimientoDescripcion" value="Descripcion:"/>
+				<h:panelGroup>
+					<h:inputText id="tipomovimientoBeanTipomovimientoDescripcion" maxLength="250" value="#{tipomovimientoBean.tipomovimiento.descripcion}"/>
+					<h:message for="tipomovimientoBeanTipomovimientoDescripcion" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="tipomovimientoBeanTipomovimientoFecharegistro" value="Fecharegistro:"/>
+				<h:panelGroup>
+					<h:inputText id="tipomovimientoBeanTipomovimientoFecharegistro" maxLength="20" value="#{tipomovimientoBean.tipomovimiento.fecharegistro}"/>
+					<h:message for="tipomovimientoBeanTipomovimientoFecharegistro" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="tipomovimientoBeanTipomovimientoFechamodificacion" value="Fechamodificacion:"/>
+				<h:panelGroup>
+					<h:inputText id="tipomovimientoBeanTipomovimientoFechamodificacion" maxLength="20" value="#{tipomovimientoBean.tipomovimiento.fechamodificacion}"/>
+					<h:message for="tipomovimientoBeanTipomovimientoFechamodificacion" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="tipomovimientoBeanTipomovimientoIdestado" value="Idestado:"/>
+				<h:panelGroup>
+					<h:inputText id="tipomovimientoBeanTipomovimientoIdestado" value="#{tipomovimientoBean.tipomovimiento.idestado}"/>
+					<h:message for="tipomovimientoBeanTipomovimientoIdestado" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+			</h:panelGrid>
+
+			<div class="buttons">
+				<h:commandLink value="Save" action='#{tipomovimientoBean.update}' styleClass="btn btn-primary"/>
+				<c:choose>
+					<c:when test='#{!empty tipomovimientoBean.id}'>
+						<h:link value="Cancel" outcome="view" styleClass="btn btn-primary">
+							<f:param name="id" value='#{tipomovimientoBean.id}'/>
+						</h:link>
+						<h:commandLink value="Delete" action='#{tipomovimientoBean.delete}' styleClass="btn btn-primary"/>
+					</c:when>
+					<c:otherwise>
+						<h:link value="Cancel" outcome="search" styleClass="btn btn-primary"/>
+					</c:otherwise>
+				</c:choose>
+			</div>
+		</h:form>
+	</ui:define>
+
+</ui:composition>

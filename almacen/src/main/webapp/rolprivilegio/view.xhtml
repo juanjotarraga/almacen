@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/resources/scaffold/pageTemplate.xhtml">
+
+	<f:metadata>
+		<f:viewParam name="id" value='#{rolprivilegioBean.id}'/>
+		<f:event type="preRenderView" listener='#{rolprivilegioBean.retrieve}'/>
+	</f:metadata>
+
+	<ui:param name="pageTitle" value="View Rolprivilegio"/>
+
+	<ui:define name="header">
+		Rolprivilegio
+	</ui:define>
+
+	<ui:define name="subheader">
+		View existing Rolprivilegio
+	</ui:define>
+
+	<ui:define name="footer"/>
+
+	<ui:define name="main">
+		<h:panelGrid columnClasses="label,component,required" columns="3">
+			<h:outputLabel for="rolprivilegioBeanRolprivilegioRolprivilegio" value="Rolprivilegio:"/>
+			<h:outputText id="rolprivilegioBeanRolprivilegioRolprivilegio" value="#{rolprivilegioBean.rolprivilegio.rolprivilegio}"/>
+			<h:outputText/>
+			<h:outputLabel for="rolprivilegioBeanRolprivilegioDescripcion" value="Descripcion:"/>
+			<h:outputText id="rolprivilegioBeanRolprivilegioDescripcion" value="#{rolprivilegioBean.rolprivilegio.descripcion}"/>
+			<h:outputText/>
+			<h:outputLabel for="rolprivilegioBeanRolprivilegioRuta" value="Ruta:"/>
+			<h:outputText id="rolprivilegioBeanRolprivilegioRuta" value="#{rolprivilegioBean.rolprivilegio.ruta}"/>
+			<h:outputText/>
+			<h:outputLabel for="rolprivilegioBeanRolprivilegioFecharegistro" value="Fecharegistro:"/>
+			<h:outputText id="rolprivilegioBeanRolprivilegioFecharegistro" value="#{rolprivilegioBean.rolprivilegio.fecharegistro}"/>
+			<h:outputText/>
+			<h:outputLabel for="rolprivilegioBeanRolprivilegioFechamodificacion" value="Fechamodificacion:"/>
+			<h:outputText id="rolprivilegioBeanRolprivilegioFechamodificacion" value="#{rolprivilegioBean.rolprivilegio.fechamodificacion}"/>
+			<h:outputText/>
+			<h:outputLabel for="rolprivilegioBeanRolprivilegioIdenlace" value="Idenlace:"/>
+			<h:outputText id="rolprivilegioBeanRolprivilegioIdenlace" value="#{rolprivilegioBean.rolprivilegio.idenlace}"/>
+			<h:outputText/>
+			<h:outputLabel for="rolprivilegioBeanRolprivilegioIdrol" value="Idrol:"/>
+			<h:outputText id="rolprivilegioBeanRolprivilegioIdrol" value="#{rolprivilegioBean.rolprivilegio.idrol}"/>
+			<h:outputText/>
+			<h:outputLabel for="rolprivilegioBeanRolprivilegioIdestado" value="Idestado:"/>
+			<h:outputText id="rolprivilegioBeanRolprivilegioIdestado" value="#{rolprivilegioBean.rolprivilegio.idestado}"/>
+			<h:outputText/>
+		</h:panelGrid>
+
+		<div class="buttons">
+			<h:link value="View All" outcome="search" styleClass="btn btn-primary"/> 
+			<h:link value="Edit" outcome="create" includeViewParams="true" styleClass="btn btn-primary"/>
+			<h:link value="Create New" outcome="create" styleClass="btn btn-primary"/>
+		</div>
+	</ui:define>
+
+</ui:composition>

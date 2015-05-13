@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/resources/scaffold/pageTemplate.xhtml">
+
+	<f:metadata>
+		<f:viewParam name="id" value='#{detallekardexBean.id}'/>
+		<f:event type="preRenderView" listener='#{detallekardexBean.retrieve}'/>
+	</f:metadata>
+
+	<ui:param name="pageTitle" value="View Detallekardex"/>
+
+	<ui:define name="header">
+		Detallekardex
+	</ui:define>
+
+	<ui:define name="subheader">
+		View existing Detallekardex
+	</ui:define>
+
+	<ui:define name="footer"/>
+
+	<ui:define name="main">
+		<h:panelGrid columnClasses="label,component,required" columns="3">
+			<h:outputLabel for="detallekardexBeanDetallekardexFechavencimiento" value="Fechavencimiento:"/>
+			<h:outputText id="detallekardexBeanDetallekardexFechavencimiento" value="#{detallekardexBean.detallekardex.fechavencimiento}"/>
+			<h:outputText/>
+			<h:outputLabel for="detallekardexBeanDetallekardexPreciounitario" value="Preciounitario:"/>
+			<h:outputText id="detallekardexBeanDetallekardexPreciounitario" value="#{detallekardexBean.detallekardex.preciounitario}"/>
+			<h:outputText/>
+			<h:outputLabel for="detallekardexBeanDetallekardexFecharegistro" value="Fecharegistro:"/>
+			<h:outputText id="detallekardexBeanDetallekardexFecharegistro" value="#{detallekardexBean.detallekardex.fecharegistro}"/>
+			<h:outputText/>
+			<h:outputLabel for="detallekardexBeanDetallekardexFechamodificacion" value="Fechamodificacion:"/>
+			<h:outputText id="detallekardexBeanDetallekardexFechamodificacion" value="#{detallekardexBean.detallekardex.fechamodificacion}"/>
+			<h:outputText/>
+			<h:outputLabel for="detallekardexBeanDetallekardexIdkardex" value="Idkardex:"/>
+			<h:outputText id="detallekardexBeanDetallekardexIdkardex" value="#{detallekardexBean.detallekardex.idkardex}"/>
+			<h:outputText/>
+			<h:outputLabel for="detallekardexBeanDetallekardexIdestado" value="Idestado:"/>
+			<h:outputText id="detallekardexBeanDetallekardexIdestado" value="#{detallekardexBean.detallekardex.idestado}"/>
+			<h:outputText/>
+		</h:panelGrid>
+
+		<div class="buttons">
+			<h:link value="View All" outcome="search" styleClass="btn btn-primary"/> 
+			<h:link value="Edit" outcome="create" includeViewParams="true" styleClass="btn btn-primary"/>
+			<h:link value="Create New" outcome="create" styleClass="btn btn-primary"/>
+		</div>
+	</ui:define>
+
+</ui:composition>

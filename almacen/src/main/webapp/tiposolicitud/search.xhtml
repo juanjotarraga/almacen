@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/resources/scaffold/pageTemplate.xhtml">
+
+	<f:metadata>
+		<f:viewParam name="page" value='#{tiposolicitudBean.page}'/>
+		<f:event type="preRenderView" listener='#{tiposolicitudBean.paginate}'/>
+	</f:metadata>
+
+	<ui:param name="pageTitle" value="Search Tiposolicitud entities"/>
+
+	<ui:define name="header">
+		Tiposolicitud
+	</ui:define>
+
+	<ui:define name="subheader">
+		Search Tiposolicitud entities
+	</ui:define>
+
+	<ui:define name="footer"/>
+
+	<ui:define name="main">
+		<h:form id="search">
+			<f:validateBean disabled="true">
+				<h:panelGroup styleClass="search">
+
+					<h:panelGrid columnClasses="label,component,required" columns="3">
+						<h:outputLabel for="tiposolicitudBeanExampleTiposolicitud" value="Tiposolicitud:"/>
+						<h:panelGroup>
+							<h:inputText id="tiposolicitudBeanExampleTiposolicitud" maxLength="50" value="#{tiposolicitudBean.example.tiposolicitud}"/>
+							<h:message for="tiposolicitudBeanExampleTiposolicitud" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="tiposolicitudBeanExampleObservacion" value="Observacion:"/>
+						<h:panelGroup>
+							<h:inputText id="tiposolicitudBeanExampleObservacion" maxLength="250" value="#{tiposolicitudBean.example.observacion}"/>
+							<h:message for="tiposolicitudBeanExampleObservacion" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="tiposolicitudBeanExampleFecharegistro" value="Fecharegistro:"/>
+						<h:panelGroup>
+							<h:inputText id="tiposolicitudBeanExampleFecharegistro" maxLength="20" value="#{tiposolicitudBean.example.fecharegistro}"/>
+							<h:message for="tiposolicitudBeanExampleFecharegistro" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="tiposolicitudBeanExampleFechamodificacion" value="Fechamodificacion:"/>
+						<h:panelGroup>
+							<h:inputText id="tiposolicitudBeanExampleFechamodificacion" maxLength="20" value="#{tiposolicitudBean.example.fechamodificacion}"/>
+							<h:message for="tiposolicitudBeanExampleFechamodificacion" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="tiposolicitudBeanExampleIdestado" value="Idestado:"/>
+						<h:panelGroup>
+							<h:inputText id="tiposolicitudBeanExampleIdestado" value="#{tiposolicitudBean.example.idestado}"/>
+							<h:message for="tiposolicitudBeanExampleIdestado" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+					</h:panelGrid>
+					<h:panelGroup styleClass="buttons">
+						<h:commandLink value="Search" action='#{tiposolicitudBean.search}' styleClass="btn btn-primary"/>
+						<h:commandLink value="Create New" action='#{tiposolicitudBean.create}' styleClass="btn btn-primary"/>
+					</h:panelGroup>
+				</h:panelGroup>
+			</f:validateBean>
+			
+			<h:dataTable id="tiposolicitudBeanPageItems" styleClass="data-table" value="#{tiposolicitudBean.pageItems}" var="_item">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Tiposolicitud"/>
+					</f:facet>
+					<h:link outcome="/tiposolicitud/view">
+						<f:param name="id" value="#{_item.idtiposolicitud}"/>
+						<h:outputText id="itemTiposolicitud" value="#{_item.tiposolicitud}"/>
+					</h:link>
+				</h:column>
+			</h:dataTable>
+			<ui:include src="/resources/scaffold/paginator.xhtml">
+				<ui:param name="paginatorBean" value='#{tiposolicitudBean}'/>
+			</ui:include>
+		</h:form>
+			
+	</ui:define>
+
+</ui:composition>

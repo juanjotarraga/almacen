@@ -1,0 +1,124 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/resources/scaffold/pageTemplate.xhtml">
+
+	<f:metadata>
+		<f:viewParam name="page" value='#{categoriaBean.page}'/>
+		<f:event type="preRenderView" listener='#{categoriaBean.paginate}'/>
+	</f:metadata>
+
+	<ui:param name="pageTitle" value="Search Categoria entities"/>
+
+	<ui:define name="header">
+		Categoria
+	</ui:define>
+
+	<ui:define name="subheader">
+		Search Categoria entities
+	</ui:define>
+
+	<ui:define name="footer"/>
+
+	<ui:define name="main">
+		<h:form id="search">
+			<f:validateBean disabled="true">
+				<h:panelGroup styleClass="search">
+
+					<h:panelGrid columnClasses="label,component,required" columns="3">
+						<h:outputLabel for="categoriaBeanExampleCategoria" value="Categoria:"/>
+						<h:panelGroup>
+							<h:inputText id="categoriaBeanExampleCategoria" maxLength="50" value="#{categoriaBean.example.categoria}"/>
+							<h:message for="categoriaBeanExampleCategoria" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="categoriaBeanExampleCodigocategoria" value="Codigocategoria:"/>
+						<h:panelGroup>
+							<h:inputText id="categoriaBeanExampleCodigocategoria" maxLength="50" value="#{categoriaBean.example.codigocategoria}"/>
+							<h:message for="categoriaBeanExampleCodigocategoria" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="categoriaBeanExampleDescripcion" value="Descripcion:"/>
+						<h:panelGroup>
+							<h:inputText id="categoriaBeanExampleDescripcion" maxLength="250" value="#{categoriaBean.example.descripcion}"/>
+							<h:message for="categoriaBeanExampleDescripcion" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="categoriaBeanExampleFecharegistro" value="Fecharegistro:"/>
+						<h:panelGroup>
+							<h:inputText id="categoriaBeanExampleFecharegistro" maxLength="20" value="#{categoriaBean.example.fecharegistro}"/>
+							<h:message for="categoriaBeanExampleFecharegistro" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="categoriaBeanExampleFechamodificacion" value="Fechamodificacion:"/>
+						<h:panelGroup>
+							<h:inputText id="categoriaBeanExampleFechamodificacion" maxLength="20" value="#{categoriaBean.example.fechamodificacion}"/>
+							<h:message for="categoriaBeanExampleFechamodificacion" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+					</h:panelGrid>
+					<h:panelGroup styleClass="buttons">
+						<h:commandLink value="Search" action='#{categoriaBean.search}' styleClass="btn btn-primary"/>
+						<h:commandLink value="Create New" action='#{categoriaBean.create}' styleClass="btn btn-primary"/>
+					</h:panelGroup>
+				</h:panelGroup>
+			</f:validateBean>
+			
+			<h:dataTable id="categoriaBeanPageItems" styleClass="data-table" value="#{categoriaBean.pageItems}" var="_item">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Categoria"/>
+					</f:facet>
+					<h:link outcome="/categoria/view">
+						<f:param name="id" value="#{_item.idcategoria}"/>
+						<h:outputText id="itemCategoria" value="#{_item.categoria}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Codigocategoria"/>
+					</f:facet>
+					<h:link outcome="/categoria/view">
+						<f:param name="id" value="#{_item.idcategoria}"/>
+						<h:outputText id="itemCodigocategoria" value="#{_item.codigocategoria}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Descripcion"/>
+					</f:facet>
+					<h:link outcome="/categoria/view">
+						<f:param name="id" value="#{_item.idcategoria}"/>
+						<h:outputText id="itemDescripcion" value="#{_item.descripcion}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Fecharegistro"/>
+					</f:facet>
+					<h:link outcome="/categoria/view">
+						<f:param name="id" value="#{_item.idcategoria}"/>
+						<h:outputText id="itemFecharegistro" value="#{_item.fecharegistro}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Fechamodificacion"/>
+					</f:facet>
+					<h:link outcome="/categoria/view">
+						<f:param name="id" value="#{_item.idcategoria}"/>
+						<h:outputText id="itemFechamodificacion" value="#{_item.fechamodificacion}"/>
+					</h:link>
+				</h:column>
+			</h:dataTable>
+			<ui:include src="/resources/scaffold/paginator.xhtml">
+				<ui:param name="paginatorBean" value='#{categoriaBean}'/>
+			</ui:include>
+		</h:form>
+			
+	</ui:define>
+
+</ui:composition>

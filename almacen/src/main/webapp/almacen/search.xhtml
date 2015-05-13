@@ -1,0 +1,115 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/resources/scaffold/pageTemplate.xhtml">
+
+	<f:metadata>
+		<f:viewParam name="page" value='#{almacenBean.page}'/>
+		<f:event type="preRenderView" listener='#{almacenBean.paginate}'/>
+	</f:metadata>
+
+	<ui:param name="pageTitle" value="Search Almacen entities"/>
+
+	<ui:define name="header">
+		Almacen
+	</ui:define>
+
+	<ui:define name="subheader">
+		Search Almacen entities
+	</ui:define>
+
+	<ui:define name="footer"/>
+
+	<ui:define name="main">
+		<h:form id="search">
+			<f:validateBean disabled="true">
+				<h:panelGroup styleClass="search">
+
+					<h:panelGrid columnClasses="label,component,required" columns="3">
+						<h:outputLabel for="almacenBeanExampleAlmacen" value="Almacen:"/>
+						<h:panelGroup>
+							<h:inputText id="almacenBeanExampleAlmacen" maxLength="50" value="#{almacenBean.example.almacen}"/>
+							<h:message for="almacenBeanExampleAlmacen" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="almacenBeanExampleCodigoalmacen" value="Codigoalmacen:"/>
+						<h:panelGroup>
+							<h:inputText id="almacenBeanExampleCodigoalmacen" maxLength="50" value="#{almacenBean.example.codigoalmacen}"/>
+							<h:message for="almacenBeanExampleCodigoalmacen" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="almacenBeanExampleRepresentante" value="Representante:"/>
+						<h:panelGroup>
+							<h:inputText id="almacenBeanExampleRepresentante" maxLength="50" value="#{almacenBean.example.representante}"/>
+							<h:message for="almacenBeanExampleRepresentante" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="almacenBeanExampleObservacion" value="Observacion:"/>
+						<h:panelGroup>
+							<h:inputText id="almacenBeanExampleObservacion" maxLength="250" value="#{almacenBean.example.observacion}"/>
+							<h:message for="almacenBeanExampleObservacion" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="almacenBeanExampleFecharegistro" value="Fecharegistro:"/>
+						<h:panelGroup>
+							<h:inputText id="almacenBeanExampleFecharegistro" maxLength="20" value="#{almacenBean.example.fecharegistro}"/>
+							<h:message for="almacenBeanExampleFecharegistro" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+					</h:panelGrid>
+					<h:panelGroup styleClass="buttons">
+						<h:commandLink value="Search" action='#{almacenBean.search}' styleClass="btn btn-primary"/>
+						<h:commandLink value="Create New" action='#{almacenBean.create}' styleClass="btn btn-primary"/>
+					</h:panelGroup>
+				</h:panelGroup>
+			</f:validateBean>
+			
+			<h:dataTable id="almacenBeanPageItems" styleClass="data-table" value="#{almacenBean.pageItems}" var="_item">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Almacen"/>
+					</f:facet>
+					<h:link outcome="/almacen/view">
+						<f:param name="id" value="#{_item.idalmacen}"/>
+						<h:outputText id="itemAlmacen" value="#{_item.almacen}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Codigoalmacen"/>
+					</f:facet>
+					<h:link outcome="/almacen/view">
+						<f:param name="id" value="#{_item.idalmacen}"/>
+						<h:outputText id="itemCodigoalmacen" value="#{_item.codigoalmacen}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Representante"/>
+					</f:facet>
+					<h:link outcome="/almacen/view">
+						<f:param name="id" value="#{_item.idalmacen}"/>
+						<h:outputText id="itemRepresentante" value="#{_item.representante}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Observacion"/>
+					</f:facet>
+					<h:link outcome="/almacen/view">
+						<f:param name="id" value="#{_item.idalmacen}"/>
+						<h:outputText id="itemObservacion" value="#{_item.observacion}"/>
+					</h:link>
+				</h:column>
+			</h:dataTable>
+			<ui:include src="/resources/scaffold/paginator.xhtml">
+				<ui:param name="paginatorBean" value='#{almacenBean}'/>
+			</ui:include>
+		</h:form>
+			
+	</ui:define>
+
+</ui:composition>

@@ -1,0 +1,124 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/resources/scaffold/pageTemplate.xhtml">
+
+	<f:metadata>
+		<f:viewParam name="page" value='#{proveedorBean.page}'/>
+		<f:event type="preRenderView" listener='#{proveedorBean.paginate}'/>
+	</f:metadata>
+
+	<ui:param name="pageTitle" value="Search Proveedor entities"/>
+
+	<ui:define name="header">
+		Proveedor
+	</ui:define>
+
+	<ui:define name="subheader">
+		Search Proveedor entities
+	</ui:define>
+
+	<ui:define name="footer"/>
+
+	<ui:define name="main">
+		<h:form id="search">
+			<f:validateBean disabled="true">
+				<h:panelGroup styleClass="search">
+
+					<h:panelGrid columnClasses="label,component,required" columns="3">
+						<h:outputLabel for="proveedorBeanExampleProveedor" value="Proveedor:"/>
+						<h:panelGroup>
+							<h:inputText id="proveedorBeanExampleProveedor" maxLength="100" value="#{proveedorBean.example.proveedor}"/>
+							<h:message for="proveedorBeanExampleProveedor" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="proveedorBeanExampleResponsable" value="Responsable:"/>
+						<h:panelGroup>
+							<h:inputText id="proveedorBeanExampleResponsable" maxLength="100" value="#{proveedorBean.example.responsable}"/>
+							<h:message for="proveedorBeanExampleResponsable" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="proveedorBeanExampleTelefono" value="Telefono:"/>
+						<h:panelGroup>
+							<h:inputText id="proveedorBeanExampleTelefono" maxLength="30" value="#{proveedorBean.example.telefono}"/>
+							<h:message for="proveedorBeanExampleTelefono" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="proveedorBeanExampleEmail" value="Email:"/>
+						<h:panelGroup>
+							<h:inputText id="proveedorBeanExampleEmail" maxLength="60" value="#{proveedorBean.example.email}"/>
+							<h:message for="proveedorBeanExampleEmail" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="proveedorBeanExampleDireccion" value="Direccion:"/>
+						<h:panelGroup>
+							<h:inputText id="proveedorBeanExampleDireccion" maxLength="250" value="#{proveedorBean.example.direccion}"/>
+							<h:message for="proveedorBeanExampleDireccion" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+					</h:panelGrid>
+					<h:panelGroup styleClass="buttons">
+						<h:commandLink value="Search" action='#{proveedorBean.search}' styleClass="btn btn-primary"/>
+						<h:commandLink value="Create New" action='#{proveedorBean.create}' styleClass="btn btn-primary"/>
+					</h:panelGroup>
+				</h:panelGroup>
+			</f:validateBean>
+			
+			<h:dataTable id="proveedorBeanPageItems" styleClass="data-table" value="#{proveedorBean.pageItems}" var="_item">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Proveedor"/>
+					</f:facet>
+					<h:link outcome="/proveedor/view">
+						<f:param name="id" value="#{_item.idproveedor}"/>
+						<h:outputText id="itemProveedor" value="#{_item.proveedor}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Responsable"/>
+					</f:facet>
+					<h:link outcome="/proveedor/view">
+						<f:param name="id" value="#{_item.idproveedor}"/>
+						<h:outputText id="itemResponsable" value="#{_item.responsable}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Telefono"/>
+					</f:facet>
+					<h:link outcome="/proveedor/view">
+						<f:param name="id" value="#{_item.idproveedor}"/>
+						<h:outputText id="itemTelefono" value="#{_item.telefono}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Email"/>
+					</f:facet>
+					<h:link outcome="/proveedor/view">
+						<f:param name="id" value="#{_item.idproveedor}"/>
+						<h:outputText id="itemEmail" value="#{_item.email}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Direccion"/>
+					</f:facet>
+					<h:link outcome="/proveedor/view">
+						<f:param name="id" value="#{_item.idproveedor}"/>
+						<h:outputText id="itemDireccion" value="#{_item.direccion}"/>
+					</h:link>
+				</h:column>
+			</h:dataTable>
+			<ui:include src="/resources/scaffold/paginator.xhtml">
+				<ui:param name="paginatorBean" value='#{proveedorBean}'/>
+			</ui:include>
+		</h:form>
+			
+	</ui:define>
+
+</ui:composition>

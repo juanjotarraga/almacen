@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/resources/scaffold/pageTemplate.xhtml">
+
+	<f:metadata>
+		<f:viewParam name="page" value='#{categoriaenlaceBean.page}'/>
+		<f:event type="preRenderView" listener='#{categoriaenlaceBean.paginate}'/>
+	</f:metadata>
+
+	<ui:param name="pageTitle" value="Search Categoriaenlace entities"/>
+
+	<ui:define name="header">
+		Categoriaenlace
+	</ui:define>
+
+	<ui:define name="subheader">
+		Search Categoriaenlace entities
+	</ui:define>
+
+	<ui:define name="footer"/>
+
+	<ui:define name="main">
+		<h:form id="search">
+			<f:validateBean disabled="true">
+				<h:panelGroup styleClass="search">
+
+					<h:panelGrid columnClasses="label,component,required" columns="3">
+						<h:outputLabel for="categoriaenlaceBeanExampleCategoriaenlace" value="Categoriaenlace:"/>
+						<h:panelGroup>
+							<h:inputText id="categoriaenlaceBeanExampleCategoriaenlace" maxLength="50" value="#{categoriaenlaceBean.example.categoriaenlace}"/>
+							<h:message for="categoriaenlaceBeanExampleCategoriaenlace" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="categoriaenlaceBeanExampleFecharegistro" value="Fecharegistro:"/>
+						<h:panelGroup>
+							<h:inputText id="categoriaenlaceBeanExampleFecharegistro" maxLength="20" value="#{categoriaenlaceBean.example.fecharegistro}"/>
+							<h:message for="categoriaenlaceBeanExampleFecharegistro" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="categoriaenlaceBeanExampleFechamodificacion" value="Fechamodificacion:"/>
+						<h:panelGroup>
+							<h:inputText id="categoriaenlaceBeanExampleFechamodificacion" maxLength="20" value="#{categoriaenlaceBean.example.fechamodificacion}"/>
+							<h:message for="categoriaenlaceBeanExampleFechamodificacion" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="categoriaenlaceBeanExampleIdestado" value="Idestado:"/>
+						<h:panelGroup>
+							<h:inputText id="categoriaenlaceBeanExampleIdestado" value="#{categoriaenlaceBean.example.idestado}"/>
+							<h:message for="categoriaenlaceBeanExampleIdestado" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+					</h:panelGrid>
+					<h:panelGroup styleClass="buttons">
+						<h:commandLink value="Search" action='#{categoriaenlaceBean.search}' styleClass="btn btn-primary"/>
+						<h:commandLink value="Create New" action='#{categoriaenlaceBean.create}' styleClass="btn btn-primary"/>
+					</h:panelGroup>
+				</h:panelGroup>
+			</f:validateBean>
+			
+			<h:dataTable id="categoriaenlaceBeanPageItems" styleClass="data-table" value="#{categoriaenlaceBean.pageItems}" var="_item">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Categoriaenlace"/>
+					</f:facet>
+					<h:link outcome="/categoriaenlace/view">
+						<f:param name="id" value="#{_item.idcategoriaenlace}"/>
+						<h:outputText id="itemCategoriaenlace" value="#{_item.categoriaenlace}"/>
+					</h:link>
+				</h:column>
+			</h:dataTable>
+			<ui:include src="/resources/scaffold/paginator.xhtml">
+				<ui:param name="paginatorBean" value='#{categoriaenlaceBean}'/>
+			</ui:include>
+		</h:form>
+			
+	</ui:define>
+
+</ui:composition>

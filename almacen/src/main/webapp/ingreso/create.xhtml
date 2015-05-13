@@ -1,0 +1,136 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	template="/resources/scaffold/pageTemplate.xhtml">
+
+	<f:metadata>
+		<f:viewParam name="id" value='#{ingresoBean.id}'/>
+		<f:event type="preRenderView" listener='#{ingresoBean.retrieve}'/>
+	</f:metadata>
+
+	<ui:param name="pageTitle" value="Create Ingreso"/>
+
+	<ui:define name="header">
+		Ingreso
+	</ui:define>
+
+	<ui:define name="subheader">
+		<c:choose>
+			<c:when test='#{!empty ingresoBean.id}'>
+				Edit existing Ingreso
+			</c:when>
+			<c:otherwise>
+				Create a new Ingreso
+			</c:otherwise>
+		</c:choose>
+	</ui:define>
+
+	<ui:define name="footer"/>
+
+	<ui:define name="main">
+		<h:form id="create">
+			<h:messages globalOnly="true" styleClass="error"/>
+
+			<h:panelGrid columnClasses="label,component,required" columns="3">
+				<h:outputLabel for="ingresoBeanIngresoCantidad" value="Cantidad:"/>
+				<h:panelGroup>
+					<h:inputText id="ingresoBeanIngresoCantidad" value="#{ingresoBean.ingreso.cantidad}"/>
+					<h:message for="ingresoBeanIngresoCantidad" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="ingresoBeanIngresoPreciounitario" value="Preciounitario:"/>
+				<h:panelGroup>
+					<h:inputText id="ingresoBeanIngresoPreciounitario" value="#{ingresoBean.ingreso.preciounitario}"/>
+					<h:message for="ingresoBeanIngresoPreciounitario" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="ingresoBeanIngresoPreciototal" value="Preciototal:"/>
+				<h:panelGroup>
+					<h:inputText id="ingresoBeanIngresoPreciototal" value="#{ingresoBean.ingreso.preciototal}"/>
+					<h:message for="ingresoBeanIngresoPreciototal" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="ingresoBeanIngresoFechaingreso" value="Fechaingreso:"/>
+				<h:panelGroup>
+					<h:inputText id="ingresoBeanIngresoFechaingreso" maxLength="20" value="#{ingresoBean.ingreso.fechaingreso}"/>
+					<h:message for="ingresoBeanIngresoFechaingreso" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="ingresoBeanIngresoNrofactura" value="Nrofactura:"/>
+				<h:panelGroup>
+					<h:inputText id="ingresoBeanIngresoNrofactura" maxLength="10" value="#{ingresoBean.ingreso.nrofactura}"/>
+					<h:message for="ingresoBeanIngresoNrofactura" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="ingresoBeanIngresoFecharegistro" value="Fecharegistro:"/>
+				<h:panelGroup>
+					<h:inputText id="ingresoBeanIngresoFecharegistro" maxLength="20" value="#{ingresoBean.ingreso.fecharegistro}"/>
+					<h:message for="ingresoBeanIngresoFecharegistro" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="ingresoBeanIngresoFechamodificacion" value="Fechamodificacion:"/>
+				<h:panelGroup>
+					<h:inputText id="ingresoBeanIngresoFechamodificacion" maxLength="20" value="#{ingresoBean.ingreso.fechamodificacion}"/>
+					<h:message for="ingresoBeanIngresoFechamodificacion" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="ingresoBeanIngresoObservacion" value="Observacion:"/>
+				<h:panelGroup>
+					<h:inputText id="ingresoBeanIngresoObservacion" maxLength="250" value="#{ingresoBean.ingreso.observacion}"/>
+					<h:message for="ingresoBeanIngresoObservacion" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="ingresoBeanIngresoIdkardex" value="Idkardex:"/>
+				<h:panelGroup>
+					<h:inputText id="ingresoBeanIngresoIdkardex" value="#{ingresoBean.ingreso.idkardex}"/>
+					<h:message for="ingresoBeanIngresoIdkardex" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="ingresoBeanIngresoIdestado" value="Idestado:"/>
+				<h:panelGroup>
+					<h:inputText id="ingresoBeanIngresoIdestado" value="#{ingresoBean.ingreso.idestado}"/>
+					<h:message for="ingresoBeanIngresoIdestado" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="ingresoBeanIngresoIdtipomovimiento" value="Idtipomovimiento:"/>
+				<h:panelGroup>
+					<h:inputText id="ingresoBeanIngresoIdtipomovimiento" value="#{ingresoBean.ingreso.idtipomovimiento}"/>
+					<h:message for="ingresoBeanIngresoIdtipomovimiento" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="ingresoBeanIngresoIddetallesolicitud" value="Iddetallesolicitud:"/>
+				<h:panelGroup>
+					<h:inputText id="ingresoBeanIngresoIddetallesolicitud" value="#{ingresoBean.ingreso.iddetallesolicitud}"/>
+					<h:message for="ingresoBeanIngresoIddetallesolicitud" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="ingresoBeanIngresoIdusuario" value="Idusuario:"/>
+				<h:panelGroup>
+					<h:inputText id="ingresoBeanIngresoIdusuario" value="#{ingresoBean.ingreso.idusuario}"/>
+					<h:message for="ingresoBeanIngresoIdusuario" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+			</h:panelGrid>
+
+			<div class="buttons">
+				<h:commandLink value="Save" action='#{ingresoBean.update}' styleClass="btn btn-primary"/>
+				<c:choose>
+					<c:when test='#{!empty ingresoBean.id}'>
+						<h:link value="Cancel" outcome="view" styleClass="btn btn-primary">
+							<f:param name="id" value='#{ingresoBean.id}'/>
+						</h:link>
+						<h:commandLink value="Delete" action='#{ingresoBean.delete}' styleClass="btn btn-primary"/>
+					</c:when>
+					<c:otherwise>
+						<h:link value="Cancel" outcome="search" styleClass="btn btn-primary"/>
+					</c:otherwise>
+				</c:choose>
+			</div>
+		</h:form>
+	</ui:define>
+
+</ui:composition>

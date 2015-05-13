@@ -1,0 +1,124 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/resources/scaffold/pageTemplate.xhtml">
+
+	<f:metadata>
+		<f:viewParam name="page" value='#{ingresoBean.page}'/>
+		<f:event type="preRenderView" listener='#{ingresoBean.paginate}'/>
+	</f:metadata>
+
+	<ui:param name="pageTitle" value="Search Ingreso entities"/>
+
+	<ui:define name="header">
+		Ingreso
+	</ui:define>
+
+	<ui:define name="subheader">
+		Search Ingreso entities
+	</ui:define>
+
+	<ui:define name="footer"/>
+
+	<ui:define name="main">
+		<h:form id="search">
+			<f:validateBean disabled="true">
+				<h:panelGroup styleClass="search">
+
+					<h:panelGrid columnClasses="label,component,required" columns="3">
+						<h:outputLabel for="ingresoBeanExampleCantidad" value="Cantidad:"/>
+						<h:panelGroup>
+							<h:inputText id="ingresoBeanExampleCantidad" value="#{ingresoBean.example.cantidad}"/>
+							<h:message for="ingresoBeanExampleCantidad" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="ingresoBeanExampleFechaingreso" value="Fechaingreso:"/>
+						<h:panelGroup>
+							<h:inputText id="ingresoBeanExampleFechaingreso" maxLength="20" value="#{ingresoBean.example.fechaingreso}"/>
+							<h:message for="ingresoBeanExampleFechaingreso" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="ingresoBeanExampleNrofactura" value="Nrofactura:"/>
+						<h:panelGroup>
+							<h:inputText id="ingresoBeanExampleNrofactura" maxLength="10" value="#{ingresoBean.example.nrofactura}"/>
+							<h:message for="ingresoBeanExampleNrofactura" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="ingresoBeanExampleFecharegistro" value="Fecharegistro:"/>
+						<h:panelGroup>
+							<h:inputText id="ingresoBeanExampleFecharegistro" maxLength="20" value="#{ingresoBean.example.fecharegistro}"/>
+							<h:message for="ingresoBeanExampleFecharegistro" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="ingresoBeanExampleFechamodificacion" value="Fechamodificacion:"/>
+						<h:panelGroup>
+							<h:inputText id="ingresoBeanExampleFechamodificacion" maxLength="20" value="#{ingresoBean.example.fechamodificacion}"/>
+							<h:message for="ingresoBeanExampleFechamodificacion" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+					</h:panelGrid>
+					<h:panelGroup styleClass="buttons">
+						<h:commandLink value="Search" action='#{ingresoBean.search}' styleClass="btn btn-primary"/>
+						<h:commandLink value="Create New" action='#{ingresoBean.create}' styleClass="btn btn-primary"/>
+					</h:panelGroup>
+				</h:panelGroup>
+			</f:validateBean>
+			
+			<h:dataTable id="ingresoBeanPageItems" styleClass="data-table" value="#{ingresoBean.pageItems}" var="_item">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Cantidad"/>
+					</f:facet>
+					<h:link outcome="/ingreso/view">
+						<f:param name="id" value="#{_item.idingreso}"/>
+						<h:outputText id="itemCantidad" value="#{_item.cantidad}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Preciounitario"/>
+					</f:facet>
+					<h:link outcome="/ingreso/view">
+						<f:param name="id" value="#{_item.idingreso}"/>
+						<h:outputText id="itemPreciounitario" value="#{_item.preciounitario}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Preciototal"/>
+					</f:facet>
+					<h:link outcome="/ingreso/view">
+						<f:param name="id" value="#{_item.idingreso}"/>
+						<h:outputText id="itemPreciototal" value="#{_item.preciototal}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Fechaingreso"/>
+					</f:facet>
+					<h:link outcome="/ingreso/view">
+						<f:param name="id" value="#{_item.idingreso}"/>
+						<h:outputText id="itemFechaingreso" value="#{_item.fechaingreso}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Nrofactura"/>
+					</f:facet>
+					<h:link outcome="/ingreso/view">
+						<f:param name="id" value="#{_item.idingreso}"/>
+						<h:outputText id="itemNrofactura" value="#{_item.nrofactura}"/>
+					</h:link>
+				</h:column>
+			</h:dataTable>
+			<ui:include src="/resources/scaffold/paginator.xhtml">
+				<ui:param name="paginatorBean" value='#{ingresoBean}'/>
+			</ui:include>
+		</h:form>
+			
+	</ui:define>
+
+</ui:composition>

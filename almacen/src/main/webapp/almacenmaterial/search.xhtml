@@ -1,0 +1,124 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/resources/scaffold/pageTemplate.xhtml">
+
+	<f:metadata>
+		<f:viewParam name="page" value='#{almacenmaterialBean.page}'/>
+		<f:event type="preRenderView" listener='#{almacenmaterialBean.paginate}'/>
+	</f:metadata>
+
+	<ui:param name="pageTitle" value="Search Almacenmaterial entities"/>
+
+	<ui:define name="header">
+		Almacenmaterial
+	</ui:define>
+
+	<ui:define name="subheader">
+		Search Almacenmaterial entities
+	</ui:define>
+
+	<ui:define name="footer"/>
+
+	<ui:define name="main">
+		<h:form id="search">
+			<f:validateBean disabled="true">
+				<h:panelGroup styleClass="search">
+
+					<h:panelGrid columnClasses="label,component,required" columns="3">
+						<h:outputLabel for="almacenmaterialBeanExampleFecharegistro" value="Fecharegistro:"/>
+						<h:panelGroup>
+							<h:inputText id="almacenmaterialBeanExampleFecharegistro" maxLength="20" value="#{almacenmaterialBean.example.fecharegistro}"/>
+							<h:message for="almacenmaterialBeanExampleFecharegistro" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="almacenmaterialBeanExampleFechamodificacion" value="Fechamodificacion:"/>
+						<h:panelGroup>
+							<h:inputText id="almacenmaterialBeanExampleFechamodificacion" maxLength="20" value="#{almacenmaterialBean.example.fechamodificacion}"/>
+							<h:message for="almacenmaterialBeanExampleFechamodificacion" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="almacenmaterialBeanExampleIdalmacen" value="Idalmacen:"/>
+						<h:panelGroup>
+							<h:inputText id="almacenmaterialBeanExampleIdalmacen" value="#{almacenmaterialBean.example.idalmacen}"/>
+							<h:message for="almacenmaterialBeanExampleIdalmacen" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="almacenmaterialBeanExampleIdmaterial" value="Idmaterial:"/>
+						<h:panelGroup>
+							<h:inputText id="almacenmaterialBeanExampleIdmaterial" value="#{almacenmaterialBean.example.idmaterial}"/>
+							<h:message for="almacenmaterialBeanExampleIdmaterial" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="almacenmaterialBeanExampleIdestado" value="Idestado:"/>
+						<h:panelGroup>
+							<h:inputText id="almacenmaterialBeanExampleIdestado" value="#{almacenmaterialBean.example.idestado}"/>
+							<h:message for="almacenmaterialBeanExampleIdestado" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+					</h:panelGrid>
+					<h:panelGroup styleClass="buttons">
+						<h:commandLink value="Search" action='#{almacenmaterialBean.search}' styleClass="btn btn-primary"/>
+						<h:commandLink value="Create New" action='#{almacenmaterialBean.create}' styleClass="btn btn-primary"/>
+					</h:panelGroup>
+				</h:panelGroup>
+			</f:validateBean>
+			
+			<h:dataTable id="almacenmaterialBeanPageItems" styleClass="data-table" value="#{almacenmaterialBean.pageItems}" var="_item">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Fecharegistro"/>
+					</f:facet>
+					<h:link outcome="/almacenmaterial/view">
+						<f:param name="id" value="#{_item.idalmacenmaterial}"/>
+						<h:outputText id="itemFecharegistro" value="#{_item.fecharegistro}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Fechamodificacion"/>
+					</f:facet>
+					<h:link outcome="/almacenmaterial/view">
+						<f:param name="id" value="#{_item.idalmacenmaterial}"/>
+						<h:outputText id="itemFechamodificacion" value="#{_item.fechamodificacion}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Idalmacen"/>
+					</f:facet>
+					<h:link outcome="/almacenmaterial/view">
+						<f:param name="id" value="#{_item.idalmacenmaterial}"/>
+						<h:outputText id="itemIdalmacen" value="#{_item.idalmacen}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Idmaterial"/>
+					</f:facet>
+					<h:link outcome="/almacenmaterial/view">
+						<f:param name="id" value="#{_item.idalmacenmaterial}"/>
+						<h:outputText id="itemIdmaterial" value="#{_item.idmaterial}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Idestado"/>
+					</f:facet>
+					<h:link outcome="/almacenmaterial/view">
+						<f:param name="id" value="#{_item.idalmacenmaterial}"/>
+						<h:outputText id="itemIdestado" value="#{_item.idestado}"/>
+					</h:link>
+				</h:column>
+			</h:dataTable>
+			<ui:include src="/resources/scaffold/paginator.xhtml">
+				<ui:param name="paginatorBean" value='#{almacenmaterialBean}'/>
+			</ui:include>
+		</h:form>
+			
+	</ui:define>
+
+</ui:composition>

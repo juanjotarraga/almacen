@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/resources/scaffold/pageTemplate.xhtml">
+
+	<f:metadata>
+		<f:viewParam name="id" value='#{centroBean.id}'/>
+		<f:event type="preRenderView" listener='#{centroBean.retrieve}'/>
+	</f:metadata>
+
+	<ui:param name="pageTitle" value="View Centro"/>
+
+	<ui:define name="header">
+		Centro
+	</ui:define>
+
+	<ui:define name="subheader">
+		View existing Centro
+	</ui:define>
+
+	<ui:define name="footer"/>
+
+	<ui:define name="main">
+		<h:panelGrid columnClasses="label,component,required" columns="3">
+			<h:outputLabel for="centroBeanCentroCentro" value="Centro:"/>
+			<h:outputText id="centroBeanCentroCentro" value="#{centroBean.centro.centro}"/>
+			<h:outputText/>
+			<h:outputLabel for="centroBeanCentroDescripcion" value="Descripcion:"/>
+			<h:outputText id="centroBeanCentroDescripcion" value="#{centroBean.centro.descripcion}"/>
+			<h:outputText/>
+			<h:outputLabel for="centroBeanCentroFecharegistro" value="Fecharegistro:"/>
+			<h:outputText id="centroBeanCentroFecharegistro" value="#{centroBean.centro.fecharegistro}"/>
+			<h:outputText/>
+			<h:outputLabel for="centroBeanCentroFechamodificacion" value="Fechamodificacion:"/>
+			<h:outputText id="centroBeanCentroFechamodificacion" value="#{centroBean.centro.fechamodificacion}"/>
+			<h:outputText/>
+			<h:outputLabel for="centroBeanCentroIdestado" value="Idestado:"/>
+			<h:outputText id="centroBeanCentroIdestado" value="#{centroBean.centro.idestado}"/>
+			<h:outputText/>
+		</h:panelGrid>
+
+		<div class="buttons">
+			<h:link value="View All" outcome="search" styleClass="btn btn-primary"/> 
+			<h:link value="Edit" outcome="create" includeViewParams="true" styleClass="btn btn-primary"/>
+			<h:link value="Create New" outcome="create" styleClass="btn btn-primary"/>
+		</div>
+	</ui:define>
+
+</ui:composition>

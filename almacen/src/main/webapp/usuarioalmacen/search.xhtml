@@ -1,0 +1,124 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/resources/scaffold/pageTemplate.xhtml">
+
+	<f:metadata>
+		<f:viewParam name="page" value='#{usuarioalmacenBean.page}'/>
+		<f:event type="preRenderView" listener='#{usuarioalmacenBean.paginate}'/>
+	</f:metadata>
+
+	<ui:param name="pageTitle" value="Search Usuarioalmacen entities"/>
+
+	<ui:define name="header">
+		Usuarioalmacen
+	</ui:define>
+
+	<ui:define name="subheader">
+		Search Usuarioalmacen entities
+	</ui:define>
+
+	<ui:define name="footer"/>
+
+	<ui:define name="main">
+		<h:form id="search">
+			<f:validateBean disabled="true">
+				<h:panelGroup styleClass="search">
+
+					<h:panelGrid columnClasses="label,component,required" columns="3">
+						<h:outputLabel for="usuarioalmacenBeanExampleFechaasignacion" value="Fechaasignacion:"/>
+						<h:panelGroup>
+							<h:inputText id="usuarioalmacenBeanExampleFechaasignacion" maxLength="20" value="#{usuarioalmacenBean.example.fechaasignacion}"/>
+							<h:message for="usuarioalmacenBeanExampleFechaasignacion" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="usuarioalmacenBeanExampleFecharegistro" value="Fecharegistro:"/>
+						<h:panelGroup>
+							<h:inputText id="usuarioalmacenBeanExampleFecharegistro" maxLength="20" value="#{usuarioalmacenBean.example.fecharegistro}"/>
+							<h:message for="usuarioalmacenBeanExampleFecharegistro" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="usuarioalmacenBeanExampleFechamodificacion" value="Fechamodificacion:"/>
+						<h:panelGroup>
+							<h:inputText id="usuarioalmacenBeanExampleFechamodificacion" maxLength="20" value="#{usuarioalmacenBean.example.fechamodificacion}"/>
+							<h:message for="usuarioalmacenBeanExampleFechamodificacion" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="usuarioalmacenBeanExampleIdalmacen" value="Idalmacen:"/>
+						<h:panelGroup>
+							<h:inputText id="usuarioalmacenBeanExampleIdalmacen" value="#{usuarioalmacenBean.example.idalmacen}"/>
+							<h:message for="usuarioalmacenBeanExampleIdalmacen" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="usuarioalmacenBeanExampleIdusuario" value="Idusuario:"/>
+						<h:panelGroup>
+							<h:inputText id="usuarioalmacenBeanExampleIdusuario" value="#{usuarioalmacenBean.example.idusuario}"/>
+							<h:message for="usuarioalmacenBeanExampleIdusuario" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+					</h:panelGrid>
+					<h:panelGroup styleClass="buttons">
+						<h:commandLink value="Search" action='#{usuarioalmacenBean.search}' styleClass="btn btn-primary"/>
+						<h:commandLink value="Create New" action='#{usuarioalmacenBean.create}' styleClass="btn btn-primary"/>
+					</h:panelGroup>
+				</h:panelGroup>
+			</f:validateBean>
+			
+			<h:dataTable id="usuarioalmacenBeanPageItems" styleClass="data-table" value="#{usuarioalmacenBean.pageItems}" var="_item">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Fechaasignacion"/>
+					</f:facet>
+					<h:link outcome="/usuarioalmacen/view">
+						<f:param name="id" value="#{_item.idusuarioalmacen}"/>
+						<h:outputText id="itemFechaasignacion" value="#{_item.fechaasignacion}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Fecharegistro"/>
+					</f:facet>
+					<h:link outcome="/usuarioalmacen/view">
+						<f:param name="id" value="#{_item.idusuarioalmacen}"/>
+						<h:outputText id="itemFecharegistro" value="#{_item.fecharegistro}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Fechamodificacion"/>
+					</f:facet>
+					<h:link outcome="/usuarioalmacen/view">
+						<f:param name="id" value="#{_item.idusuarioalmacen}"/>
+						<h:outputText id="itemFechamodificacion" value="#{_item.fechamodificacion}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Idalmacen"/>
+					</f:facet>
+					<h:link outcome="/usuarioalmacen/view">
+						<f:param name="id" value="#{_item.idusuarioalmacen}"/>
+						<h:outputText id="itemIdalmacen" value="#{_item.idalmacen}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Idusuario"/>
+					</f:facet>
+					<h:link outcome="/usuarioalmacen/view">
+						<f:param name="id" value="#{_item.idusuarioalmacen}"/>
+						<h:outputText id="itemIdusuario" value="#{_item.idusuario}"/>
+					</h:link>
+				</h:column>
+			</h:dataTable>
+			<ui:include src="/resources/scaffold/paginator.xhtml">
+				<ui:param name="paginatorBean" value='#{usuarioalmacenBean}'/>
+			</ui:include>
+		</h:form>
+			
+	</ui:define>
+
+</ui:composition>

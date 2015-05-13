@@ -1,0 +1,124 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/resources/scaffold/pageTemplate.xhtml">
+
+	<f:metadata>
+		<f:viewParam name="page" value='#{tipomovimientoBean.page}'/>
+		<f:event type="preRenderView" listener='#{tipomovimientoBean.paginate}'/>
+	</f:metadata>
+
+	<ui:param name="pageTitle" value="Search Tipomovimiento entities"/>
+
+	<ui:define name="header">
+		Tipomovimiento
+	</ui:define>
+
+	<ui:define name="subheader">
+		Search Tipomovimiento entities
+	</ui:define>
+
+	<ui:define name="footer"/>
+
+	<ui:define name="main">
+		<h:form id="search">
+			<f:validateBean disabled="true">
+				<h:panelGroup styleClass="search">
+
+					<h:panelGrid columnClasses="label,component,required" columns="3">
+						<h:outputLabel for="tipomovimientoBeanExampleTipomovimiento" value="Tipomovimiento:"/>
+						<h:panelGroup>
+							<h:inputText id="tipomovimientoBeanExampleTipomovimiento" maxLength="50" value="#{tipomovimientoBean.example.tipomovimiento}"/>
+							<h:message for="tipomovimientoBeanExampleTipomovimiento" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="tipomovimientoBeanExampleEntradasalida" value="Entradasalida:"/>
+						<h:panelGroup>
+							<h:inputText id="tipomovimientoBeanExampleEntradasalida" value="#{tipomovimientoBean.example.entradasalida}"/>
+							<h:message for="tipomovimientoBeanExampleEntradasalida" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="tipomovimientoBeanExampleDescripcion" value="Descripcion:"/>
+						<h:panelGroup>
+							<h:inputText id="tipomovimientoBeanExampleDescripcion" maxLength="250" value="#{tipomovimientoBean.example.descripcion}"/>
+							<h:message for="tipomovimientoBeanExampleDescripcion" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="tipomovimientoBeanExampleFecharegistro" value="Fecharegistro:"/>
+						<h:panelGroup>
+							<h:inputText id="tipomovimientoBeanExampleFecharegistro" maxLength="20" value="#{tipomovimientoBean.example.fecharegistro}"/>
+							<h:message for="tipomovimientoBeanExampleFecharegistro" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="tipomovimientoBeanExampleFechamodificacion" value="Fechamodificacion:"/>
+						<h:panelGroup>
+							<h:inputText id="tipomovimientoBeanExampleFechamodificacion" maxLength="20" value="#{tipomovimientoBean.example.fechamodificacion}"/>
+							<h:message for="tipomovimientoBeanExampleFechamodificacion" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+					</h:panelGrid>
+					<h:panelGroup styleClass="buttons">
+						<h:commandLink value="Search" action='#{tipomovimientoBean.search}' styleClass="btn btn-primary"/>
+						<h:commandLink value="Create New" action='#{tipomovimientoBean.create}' styleClass="btn btn-primary"/>
+					</h:panelGroup>
+				</h:panelGroup>
+			</f:validateBean>
+			
+			<h:dataTable id="tipomovimientoBeanPageItems" styleClass="data-table" value="#{tipomovimientoBean.pageItems}" var="_item">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Tipomovimiento"/>
+					</f:facet>
+					<h:link outcome="/tipomovimiento/view">
+						<f:param name="id" value="#{_item.idtipomovimiento}"/>
+						<h:outputText id="itemTipomovimiento" value="#{_item.tipomovimiento}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Entradasalida"/>
+					</f:facet>
+					<h:link outcome="/tipomovimiento/view">
+						<f:param name="id" value="#{_item.idtipomovimiento}"/>
+						<h:outputText id="itemEntradasalida" value="#{_item.entradasalida}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Descripcion"/>
+					</f:facet>
+					<h:link outcome="/tipomovimiento/view">
+						<f:param name="id" value="#{_item.idtipomovimiento}"/>
+						<h:outputText id="itemDescripcion" value="#{_item.descripcion}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Fecharegistro"/>
+					</f:facet>
+					<h:link outcome="/tipomovimiento/view">
+						<f:param name="id" value="#{_item.idtipomovimiento}"/>
+						<h:outputText id="itemFecharegistro" value="#{_item.fecharegistro}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Fechamodificacion"/>
+					</f:facet>
+					<h:link outcome="/tipomovimiento/view">
+						<f:param name="id" value="#{_item.idtipomovimiento}"/>
+						<h:outputText id="itemFechamodificacion" value="#{_item.fechamodificacion}"/>
+					</h:link>
+				</h:column>
+			</h:dataTable>
+			<ui:include src="/resources/scaffold/paginator.xhtml">
+				<ui:param name="paginatorBean" value='#{tipomovimientoBean}'/>
+			</ui:include>
+		</h:form>
+			
+	</ui:define>
+
+</ui:composition>

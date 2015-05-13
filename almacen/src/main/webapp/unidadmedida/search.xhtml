@@ -1,0 +1,106 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/resources/scaffold/pageTemplate.xhtml">
+
+	<f:metadata>
+		<f:viewParam name="page" value='#{unidadmedidaBean.page}'/>
+		<f:event type="preRenderView" listener='#{unidadmedidaBean.paginate}'/>
+	</f:metadata>
+
+	<ui:param name="pageTitle" value="Search Unidadmedida entities"/>
+
+	<ui:define name="header">
+		Unidadmedida
+	</ui:define>
+
+	<ui:define name="subheader">
+		Search Unidadmedida entities
+	</ui:define>
+
+	<ui:define name="footer"/>
+
+	<ui:define name="main">
+		<h:form id="search">
+			<f:validateBean disabled="true">
+				<h:panelGroup styleClass="search">
+
+					<h:panelGrid columnClasses="label,component,required" columns="3">
+						<h:outputLabel for="unidadmedidaBeanExampleUnidadmedida" value="Unidadmedida:"/>
+						<h:panelGroup>
+							<h:inputText id="unidadmedidaBeanExampleUnidadmedida" maxLength="50" value="#{unidadmedidaBean.example.unidadmedida}"/>
+							<h:message for="unidadmedidaBeanExampleUnidadmedida" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="unidadmedidaBeanExampleSigla" value="Sigla:"/>
+						<h:panelGroup>
+							<h:inputText id="unidadmedidaBeanExampleSigla" maxLength="10" value="#{unidadmedidaBean.example.sigla}"/>
+							<h:message for="unidadmedidaBeanExampleSigla" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="unidadmedidaBeanExampleDescripcion" value="Descripcion:"/>
+						<h:panelGroup>
+							<h:inputText id="unidadmedidaBeanExampleDescripcion" maxLength="250" value="#{unidadmedidaBean.example.descripcion}"/>
+							<h:message for="unidadmedidaBeanExampleDescripcion" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="unidadmedidaBeanExampleFecharegistro" value="Fecharegistro:"/>
+						<h:panelGroup>
+							<h:inputText id="unidadmedidaBeanExampleFecharegistro" maxLength="20" value="#{unidadmedidaBean.example.fecharegistro}"/>
+							<h:message for="unidadmedidaBeanExampleFecharegistro" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="unidadmedidaBeanExampleFechamodificacion" value="Fechamodificacion:"/>
+						<h:panelGroup>
+							<h:inputText id="unidadmedidaBeanExampleFechamodificacion" maxLength="20" value="#{unidadmedidaBean.example.fechamodificacion}"/>
+							<h:message for="unidadmedidaBeanExampleFechamodificacion" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+					</h:panelGrid>
+					<h:panelGroup styleClass="buttons">
+						<h:commandLink value="Search" action='#{unidadmedidaBean.search}' styleClass="btn btn-primary"/>
+						<h:commandLink value="Create New" action='#{unidadmedidaBean.create}' styleClass="btn btn-primary"/>
+					</h:panelGroup>
+				</h:panelGroup>
+			</f:validateBean>
+			
+			<h:dataTable id="unidadmedidaBeanPageItems" styleClass="data-table" value="#{unidadmedidaBean.pageItems}" var="_item">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Unidadmedida"/>
+					</f:facet>
+					<h:link outcome="/unidadmedida/view">
+						<f:param name="id" value="#{_item.idunidadmedida}"/>
+						<h:outputText id="itemUnidadmedida" value="#{_item.unidadmedida}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Sigla"/>
+					</f:facet>
+					<h:link outcome="/unidadmedida/view">
+						<f:param name="id" value="#{_item.idunidadmedida}"/>
+						<h:outputText id="itemSigla" value="#{_item.sigla}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Descripcion"/>
+					</f:facet>
+					<h:link outcome="/unidadmedida/view">
+						<f:param name="id" value="#{_item.idunidadmedida}"/>
+						<h:outputText id="itemDescripcion" value="#{_item.descripcion}"/>
+					</h:link>
+				</h:column>
+			</h:dataTable>
+			<ui:include src="/resources/scaffold/paginator.xhtml">
+				<ui:param name="paginatorBean" value='#{unidadmedidaBean}'/>
+			</ui:include>
+		</h:form>
+			
+	</ui:define>
+
+</ui:composition>

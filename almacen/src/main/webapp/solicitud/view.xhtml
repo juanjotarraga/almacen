@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/resources/scaffold/pageTemplate.xhtml">
+
+	<f:metadata>
+		<f:viewParam name="id" value='#{solicitudBean.id}'/>
+		<f:event type="preRenderView" listener='#{solicitudBean.retrieve}'/>
+	</f:metadata>
+
+	<ui:param name="pageTitle" value="View Solicitud"/>
+
+	<ui:define name="header">
+		Solicitud
+	</ui:define>
+
+	<ui:define name="subheader">
+		View existing Solicitud
+	</ui:define>
+
+	<ui:define name="footer"/>
+
+	<ui:define name="main">
+		<h:panelGrid columnClasses="label,component,required" columns="3">
+			<h:outputLabel for="solicitudBeanSolicitudSolicitud" value="Solicitud:"/>
+			<h:outputText id="solicitudBeanSolicitudSolicitud" value="#{solicitudBean.solicitud.solicitud}"/>
+			<h:outputText/>
+			<h:outputLabel for="solicitudBeanSolicitudCodigosolicitud" value="Codigosolicitud:"/>
+			<h:outputText id="solicitudBeanSolicitudCodigosolicitud" value="#{solicitudBean.solicitud.codigosolicitud}"/>
+			<h:outputText/>
+			<h:outputLabel for="solicitudBeanSolicitudFechasolicitud" value="Fechasolicitud:"/>
+			<h:outputText id="solicitudBeanSolicitudFechasolicitud" value="#{solicitudBean.solicitud.fechasolicitud}"/>
+			<h:outputText/>
+			<h:outputLabel for="solicitudBeanSolicitudObservacion" value="Observacion:"/>
+			<h:outputText id="solicitudBeanSolicitudObservacion" value="#{solicitudBean.solicitud.observacion}"/>
+			<h:outputText/>
+			<h:outputLabel for="solicitudBeanSolicitudFecharegistro" value="Fecharegistro:"/>
+			<h:outputText id="solicitudBeanSolicitudFecharegistro" value="#{solicitudBean.solicitud.fecharegistro}"/>
+			<h:outputText/>
+			<h:outputLabel for="solicitudBeanSolicitudFechamodificacion" value="Fechamodificacion:"/>
+			<h:outputText id="solicitudBeanSolicitudFechamodificacion" value="#{solicitudBean.solicitud.fechamodificacion}"/>
+			<h:outputText/>
+			<h:outputLabel for="solicitudBeanSolicitudGestion" value="Gestion:"/>
+			<h:outputText id="solicitudBeanSolicitudGestion" value="#{solicitudBean.solicitud.gestion}"/>
+			<h:outputText/>
+			<h:outputLabel for="solicitudBeanSolicitudIdtiposolicitud" value="Idtiposolicitud:"/>
+			<h:outputText id="solicitudBeanSolicitudIdtiposolicitud" value="#{solicitudBean.solicitud.idtiposolicitud}"/>
+			<h:outputText/>
+			<h:outputLabel for="solicitudBeanSolicitudIdestado" value="Idestado:"/>
+			<h:outputText id="solicitudBeanSolicitudIdestado" value="#{solicitudBean.solicitud.idestado}"/>
+			<h:outputText/>
+			<h:outputLabel for="solicitudBeanSolicitudIdusuario" value="Idusuario:"/>
+			<h:outputText id="solicitudBeanSolicitudIdusuario" value="#{solicitudBean.solicitud.idusuario}"/>
+			<h:outputText/>
+		</h:panelGrid>
+
+		<div class="buttons">
+			<h:link value="View All" outcome="search" styleClass="btn btn-primary"/> 
+			<h:link value="Edit" outcome="create" includeViewParams="true" styleClass="btn btn-primary"/>
+			<h:link value="Create New" outcome="create" styleClass="btn btn-primary"/>
+		</div>
+	</ui:define>
+
+</ui:composition>

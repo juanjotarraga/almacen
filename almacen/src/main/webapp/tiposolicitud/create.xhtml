@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	template="/resources/scaffold/pageTemplate.xhtml">
+
+	<f:metadata>
+		<f:viewParam name="id" value='#{tiposolicitudBean.id}'/>
+		<f:event type="preRenderView" listener='#{tiposolicitudBean.retrieve}'/>
+	</f:metadata>
+
+	<ui:param name="pageTitle" value="Create Tiposolicitud"/>
+
+	<ui:define name="header">
+		Tiposolicitud
+	</ui:define>
+
+	<ui:define name="subheader">
+		<c:choose>
+			<c:when test='#{!empty tiposolicitudBean.id}'>
+				Edit existing Tiposolicitud
+			</c:when>
+			<c:otherwise>
+				Create a new Tiposolicitud
+			</c:otherwise>
+		</c:choose>
+	</ui:define>
+
+	<ui:define name="footer"/>
+
+	<ui:define name="main">
+		<h:form id="create">
+			<h:messages globalOnly="true" styleClass="error"/>
+
+			<h:panelGrid columnClasses="label,component,required" columns="3">
+				<h:outputLabel for="tiposolicitudBeanTiposolicitudTiposolicitud" value="Tiposolicitud:"/>
+				<h:panelGroup>
+					<h:inputText id="tiposolicitudBeanTiposolicitudTiposolicitud" maxLength="50" required="true" value="#{tiposolicitudBean.tiposolicitud.tiposolicitud}"/>
+					<h:message for="tiposolicitudBeanTiposolicitudTiposolicitud" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText value="*"/>
+				<h:outputLabel for="tiposolicitudBeanTiposolicitudObservacion" value="Observacion:"/>
+				<h:panelGroup>
+					<h:inputText id="tiposolicitudBeanTiposolicitudObservacion" maxLength="250" value="#{tiposolicitudBean.tiposolicitud.observacion}"/>
+					<h:message for="tiposolicitudBeanTiposolicitudObservacion" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="tiposolicitudBeanTiposolicitudFecharegistro" value="Fecharegistro:"/>
+				<h:panelGroup>
+					<h:inputText id="tiposolicitudBeanTiposolicitudFecharegistro" maxLength="20" value="#{tiposolicitudBean.tiposolicitud.fecharegistro}"/>
+					<h:message for="tiposolicitudBeanTiposolicitudFecharegistro" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="tiposolicitudBeanTiposolicitudFechamodificacion" value="Fechamodificacion:"/>
+				<h:panelGroup>
+					<h:inputText id="tiposolicitudBeanTiposolicitudFechamodificacion" maxLength="20" value="#{tiposolicitudBean.tiposolicitud.fechamodificacion}"/>
+					<h:message for="tiposolicitudBeanTiposolicitudFechamodificacion" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="tiposolicitudBeanTiposolicitudIdestado" value="Idestado:"/>
+				<h:panelGroup>
+					<h:inputText id="tiposolicitudBeanTiposolicitudIdestado" value="#{tiposolicitudBean.tiposolicitud.idestado}"/>
+					<h:message for="tiposolicitudBeanTiposolicitudIdestado" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+			</h:panelGrid>
+
+			<div class="buttons">
+				<h:commandLink value="Save" action='#{tiposolicitudBean.update}' styleClass="btn btn-primary"/>
+				<c:choose>
+					<c:when test='#{!empty tiposolicitudBean.id}'>
+						<h:link value="Cancel" outcome="view" styleClass="btn btn-primary">
+							<f:param name="id" value='#{tiposolicitudBean.id}'/>
+						</h:link>
+						<h:commandLink value="Delete" action='#{tiposolicitudBean.delete}' styleClass="btn btn-primary"/>
+					</c:when>
+					<c:otherwise>
+						<h:link value="Cancel" outcome="search" styleClass="btn btn-primary"/>
+					</c:otherwise>
+				</c:choose>
+			</div>
+		</h:form>
+	</ui:define>
+
+</ui:composition>
